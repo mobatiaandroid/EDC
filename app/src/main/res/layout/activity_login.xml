@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/x1"
     tools:context=".activities.LoginActivity">
-
-
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="365dp"
-        android:layout_height="231dp"
+        android:layout_width="277dp"
+        android:layout_height="152dp"
         android:layout_marginStart="49dp"
         android:layout_marginLeft="49dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="49dp"
         android:layout_marginRight="49dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,26 +45,32 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="Email ID" />
+            android:text="Email ID"
+            android:alpha="0.5"/>
         <EditText
-            android:layout_height="30dp"
+            android:id="@+id/email"
+            android:layout_height="25dp"
             android:layout_width="match_parent"
             android:background="@null"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp">
-            
+            android:layout_marginBottom="6dp"
+            android:inputType="textEmailAddress">
+
         </EditText>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout1">
@@ -77,8 +82,56 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="Confirm Password" />
+            android:text="Confirm Password"
+            android:alpha="0.5"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="6dp"
+            android:background="@null"
+            android:inputType="textPassword" />
+
+
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@drawable/component1" />
+
+    <TextView
+        android:id="@+id/noAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="10dp"
+        android:text="Don't have an account?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <TextView
+        android:id="@+id/createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:text="@string/creatAccount"
+        android:textColor="#F37021"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
