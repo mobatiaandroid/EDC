@@ -16,6 +16,9 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var trafficNumber: EditText
     lateinit var tryFileNo: EditText
     lateinit var proceedButton: ImageView
+    lateinit var  trafficNumberVal: String
+    lateinit var  tryFileNoVal: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -32,6 +35,8 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent(context, AccountActivity::class.java)
             startActivity(intent)
         }
+        trafficNumberVal = trafficNumber.text.toString()
+        tryFileNoVal = tryFileNo.text.toString()
         proceedButton.setOnClickListener {
             if(trafficNumber.text.toString().trim().equals("", ignoreCase = true)) {
                 Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
@@ -39,8 +44,11 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             } else {
                 val intent = Intent(context, SignUpDetailActivity::class.java)
+//                intent.putExtra("trafficNumber",trafficNumberVal)
+//                intent.putExtra("tryFileNo",tryFileNoVal)
+                intent.putExtra("trafficNumber",trafficNumber.text.toString())
+                intent.putExtra("tryFileNo",tryFileNo.text.toString())
                 startActivity(intent)
-                finish()
             }
         }
     }
