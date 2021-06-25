@@ -156,19 +156,19 @@
 
             <TableLayout
                 android:id="@+id/table"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:gravity="center"
-                android:layout_marginLeft="25dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout8"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
 
                 <TableRow
                     android:background="@drawable/rectangle"
-                    android:padding="20dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -259,38 +259,38 @@
                 </TableRow>
 
             </TableLayout>
+
             <TextView
                 android:id="@+id/text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/table"
-                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:text="TOTAL"
                 android:textSize="16dp"
                 android:textStyle="bold"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="20dp"
-                android:text="TOTAL"/>
+                app:layout_constraintEnd_toStartOf="@+id/text"
+                app:layout_constraintTop_toBottomOf="@id/table" />
+
             <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/table"
-                android:text="871.50"
-                android:textSize="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="25dp"
-                android:textStyle="bold"
+                android:text="871.50"
                 android:textColor="@color/black"
-                app:layout_constraintLeft_toRightOf="@id/text2"/>
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
+                app:layout_constraintTop_toBottomOf="@id/table" />
 
             <ImageView
                 android:id="@+id/signUpButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/table"
+                app:layout_constraintStart_toStartOf="@+id/table"
                 app:layout_constraintTop_toBottomOf="@id/text2"
                 app:srcCompat="@drawable/component1" />
 
