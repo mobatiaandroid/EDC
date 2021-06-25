@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.Window
 import android.widget.*
@@ -97,6 +98,14 @@ class SignUpDetailActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
             }
+        showPassword.setOnClickListener {
+            password.transformationMethod = null;
+//            password.transformationMethod = PasswordTransformationMethod()
+        }
+        showConfirmPassword.setOnClickListener {
+            confirmPassword.transformationMethod = null;
+//            confirmPassword.transformationMethod = PasswordTransformationMethod()
+        }
         dateOfBirth.setOnClickListener { v ->
             DatePickerDialog(
                 context, pickDate,
