@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
             else {
                 val intent = Intent(context, MainActivity::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
                 finish()
             }
 
@@ -50,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
         createAccount.setOnClickListener {
             val intent = Intent(context, AccountActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
             finish()
         }
     }

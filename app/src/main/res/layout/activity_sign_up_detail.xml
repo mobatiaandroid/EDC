@@ -7,7 +7,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SignUpDetailActivity">
+    tools:context=".activities.SignUpDetailActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -251,6 +252,11 @@ account and start learning"
         android:background="@drawable/roundedbg"
         app:layout_constraintTop_toBottomOf="@id/linearLayout5"
         android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            >
+
 
         <EditText
             android:id="@+id/branch"
@@ -259,9 +265,11 @@ account and start learning"
             android:background="@null"
             android:hint="Branch"
             android:clickable="false"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="18dp"
-            android:layout_marginBottom="14dp"/>
+            android:layout_marginLeft="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
 
         <ImageView
@@ -270,7 +278,11 @@ account and start learning"
             android:layout_height="10dp"
             app:srcCompat="@drawable/vector7"
             android:layout_marginLeft="180dp"
-            android:layout_marginTop="20dp"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="24dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>
@@ -307,7 +319,7 @@ account and start learning"
                 android:layout_height="10dp"
                 app:srcCompat="@drawable/vector7"
                 android:layout_marginRight="18dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="18dp" />
@@ -360,7 +372,7 @@ account and start learning"
                 android:layout_height="10dp"
                 app:srcCompat="@drawable/vector7"
                 android:layout_marginRight="18dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 

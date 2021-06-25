@@ -1,11 +1,10 @@
 package com.dev.edc.activities
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -29,13 +28,13 @@ class SignUpDetailActivity : AppCompatActivity() {
     lateinit var  nameEnglish: EditText
     lateinit var  nameArabic: EditText
     lateinit var  emiratesID: EditText
-    lateinit var  branch: EditText
+    lateinit var  branch: TextView
     lateinit var  selectBranch: ImageView
-    lateinit var  language: EditText
+    lateinit var  language: TextView
     lateinit var  selectLanguage: ImageView
-    lateinit var  nationality: EditText
+    lateinit var  nationality: TextView
     lateinit var  selectNationality: ImageView
-    lateinit var  dateOfBirth: EditText
+    lateinit var  dateOfBirth: TextView
     lateinit var  selectDateOfBirth: ImageView
     lateinit var  password: EditText
     lateinit var  showPassword: ImageView
@@ -45,6 +44,9 @@ class SignUpDetailActivity : AppCompatActivity() {
     lateinit var  backButton: ImageView
     lateinit var  context: Context
     lateinit var  extras: Bundle
+    val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
+    val languages = arrayOf("English","Arabic","Chinese", "Spanish", "Hindi")
+    val nations = arrayOf("Emirati","Saudi","Bangladeshi","Indian","Pakistani")
     var calendar: Calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,58 +63,67 @@ class SignUpDetailActivity : AppCompatActivity() {
         emiratesID = findViewById(R.id.emiratesID)
         branch = findViewById(R.id.branch)
         selectBranch = findViewById(R.id.selectBranch)
-//        language = findViewById(R.id.language)
+        language = findViewById(R.id.language)
         selectLanguage = findViewById(R.id.selectLanguage)
-//        nationality = findViewById(R.id.nationality)
+        nationality = findViewById(R.id.nationality)
         selectNationality = findViewById(R.id.selectNationality)
-//        dateOfBirth = findViewById(R.id.dateOfBirth)
+        dateOfBirth = findViewById(R.id.dateOfBirth)
         selectDateOfBirth = findViewById(R.id.selectDateOFBirth)
-//        password = findViewById(R.id.password)
+        password = findViewById(R.id.password)
         showPassword = findViewById(R.id.showPassword)
-//        confirmPassword = findViewById(R.id.confirmPassword)
+        confirmPassword = findViewById(R.id.confirmPassword)
         showConfirmPassword = findViewById(R.id.showConfirmPassword)
         signUpButton = findViewById(R.id.signUpButton)
         backButton = findViewById(R.id.backButton)
-//        val pickDate =
-//            OnDateSetListener { view1: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
-//                calendar = Calendar.getInstance()
-//                calendar[Calendar.YEAR] = year
-//                calendar[Calendar.MONTH] = month
-//                calendar[Calendar.DAY_OF_MONTH] = dayOfMonth
-//                val s = "$dayOfMonth/$month/$year"
-//                val sdf = SimpleDateFormat("dd/MM/yyyy")
-//                try {
-//                    val strDate: Date = sdf.parse(s)
-//                    if (Date().after(strDate)) {
-//                        dateOfBirth.setText(s)
-//                    } else {
-//                        Toast.makeText(context, "Enter a Valid Date", Toast.LENGTH_SHORT)
-//                            .show()
-//                        dateOfBirth.setText("")
-//                        calendar = Calendar.getInstance()
-//                    }
-//                } catch (e: ParseException) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        dateOfBirth.setOnClickListener { v ->
-//            DatePickerDialog(
-//                context, pickDate,
-//                calendar[Calendar.YEAR],
-//                calendar[Calendar.MONTH],
-//                calendar[Calendar.DAY_OF_MONTH]
-//            )
-//                .show()
-//        }
-//        dateOfBirth.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-//            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-//            override fun afterTextChanged(s: Editable) {}
-//        })
-
+        val pickDate =
+            DatePickerDialog.OnDateSetListener { view1: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
+                calendar = Calendar.getInstance()
+                calendar[Calendar.YEAR] = year
+                calendar[Calendar.MONTH] = month
+                calendar[Calendar.DAY_OF_MONTH] = dayOfMonth
+                val s = "$dayOfMonth/$month/$year"
+                val sdf = SimpleDateFormat("dd/MM/yyyy")
+                try {
+                    val strDate: Date = sdf.parse(s)
+                    if (Date().after(strDate)) {
+                        dateOfBirth.text = s
+                    } else {
+                        Toast.makeText(context, "Enter a Valid Date", Toast.LENGTH_SHORT)
+                            .show()
+                        dateOfBirth.text = ""
+                        calendar = Calendar.getInstance()
+                    }
+                } catch (e: ParseException) {
+                    e.printStackTrace()
+                }
+            }
+        dateOfBirth.setOnClickListener { v ->
+            DatePickerDialog(
+                context, pickDate,
+                calendar[Calendar.YEAR],
+                calendar[Calendar.MONTH],
+                calendar[Calendar.DAY_OF_MONTH]
+            )
+                .show()
+        }
+        dateOfBirth.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable) {}
+        })
+        selectBranch.setOnClickListener {
+            showBranchListPopUp()
+        }
+        selectNationality.setOnClickListener {
+            showNationsListPopUp()
+        }
+        selectLanguage.setOnClickListener {
+            showLanguagesListPopUp()
+        }
         backButton.setOnClickListener {
             val intent = Intent(context, SignUpActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
         }
         extras = intent.extras!!
         trafficNumberVal = extras.getString("trafficNumber")!!
@@ -131,24 +142,67 @@ class SignUpDetailActivity : AppCompatActivity() {
             }
 
         }
-//        selectDateOfBirth.setOnClickListener {
-//            DatePickerDialog(
-//                context, pickDate,
-//                calendar[Calendar.YEAR],
-//                calendar[Calendar.MONTH],
-//                calendar[Calendar.DAY_OF_MONTH]
-//            )
-//                .show()
-//        }
+        selectDateOfBirth.setOnClickListener {
+            DatePickerDialog(
+                context, pickDate,
+                calendar[Calendar.YEAR],
+                calendar[Calendar.MONTH],
+                calendar[Calendar.DAY_OF_MONTH]
+            )
+                .show()
+        }
+    }
+
+    private fun showLanguagesListPopUp() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Select")
+        var checkedItem = -1
+        builder.setSingleChoiceItems(languages, checkedItem) { dialog, which ->
+            checkedItem = which
+        }
+        builder.setPositiveButton("OK") { dialog, which ->
+            language.text = languages[checkedItem]
+        }
+        builder.setNegativeButton("Cancel", null)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showNationsListPopUp() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Select")
+        var checkedItem = -1
+        builder.setSingleChoiceItems(nations, checkedItem) { dialog, which ->
+            checkedItem = which
+        }
+        builder.setPositiveButton("OK") { dialog, which ->
+
+            nationality.text = nations[checkedItem]
+        }
+        builder.setNegativeButton("Cancel", null)
+
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun showBranchListPopUp() {
-        val dialog = Dialog(context)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.list_pop_up)
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Select")
+        var checkedItem = -1
+        builder.setSingleChoiceItems(branches, checkedItem) { dialog, which ->
+            checkedItem = which
+
+        }
+        builder.setPositiveButton("OK") { dialog, which ->
+            branch.text = branches[checkedItem]
+        }
+        builder.setNegativeButton("Cancel", null)
+
+        val dialog = builder.create()
         dialog.show()
+
+
     }
 
     private fun showSignUpSuccessDialog(context: Context) {

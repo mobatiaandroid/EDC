@@ -26,11 +26,13 @@ class AccountActivity : AppCompatActivity() {
         backButton.setOnClickListener{
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
             finish()
         }
         newUser.setOnClickListener {
             val intent = Intent(context, SignUpActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
         }
     }
 }
