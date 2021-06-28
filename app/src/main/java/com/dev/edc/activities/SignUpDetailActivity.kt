@@ -132,7 +132,8 @@ class SignUpDetailActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             val intent = Intent(context, SignUpActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
+            overridePendingTransition(0,0)
+//            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
         }
         extras = intent.extras!!
         trafficNumberVal = extras.getString("trafficNumber")!!

@@ -4,8 +4,8 @@ package com.dev.edc.activities
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
+import android.media.Image
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -28,15 +28,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initialiseUI() {
+        backButton = findViewById(R.id.backButton)
 //        branch = findViewById(R.id.branch)
 //        selectBranch = findViewById(R.id.selectBranch)
 //        course = findViewById(R.id.course)
 //        selectCourse = findViewById(R.id.selectCourse)
-//        backButton.setOnClickListener {
-//            val intent = Intent(context, LoginActivity::class.java)
-//            startActivity(intent)
-//            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-//        }
+        backButton.setOnClickListener {
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
+        }
 //        selectBranch.setOnClickListener {
 //            showBranchListPopUp()
 //        }

@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/dialougue_top_curve"
+                android:background="@drawable/dialog_top_curve_red"
                 android:gravity="center"
                 android:scaleType="fitCenter" />
 
@@ -38,8 +38,8 @@
 
 
             android:scaleType="fitCenter"
-
-            android:src="@drawable/popup_icon"
+            android:background="@drawable/round"
+            android:src="@drawable/ic_baseline_error_24"
             app:layout_constraintBottom_toBottomOf="@id/linearLayout2"
             app:layout_constraintEnd_toEndOf="@id/linearLayout2"
             app:layout_constraintStart_toStartOf="@id/linearLayout2"
@@ -52,7 +52,7 @@
         android:layout_below="@+id/r"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:background="@drawable/dialougue_bottom_curve"
+        android:background="@drawable/dialog_bottom_curve_red"
         android:orientation="vertical"
         >
 
@@ -67,19 +67,19 @@
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:gravity="center_horizontal"
-            android:text="Confirm Your Email"
+            android:text="Alert"
             android:textColor="#ff000000"
             android:textSize="18sp" />
 
         <TextView
 
             android:id="@+id/textDialog"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/alertHead"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:text="Confirm your account via the email reciever and you are ready to login."
+            android:text="Login Successful"
 
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
@@ -96,14 +96,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-
-        android:layout_alignEnd="@id/r"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_baseline_close_24" />
 </RelativeLayout>

@@ -35,13 +35,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/group6802" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:text="Create Account"
         android:textColor="@color/black"
         android:textSize="32dp"
@@ -78,6 +78,32 @@ account and start learning"
             android:layout_width="305dp"
             android:background="@null"
             android:hint="Traffic Number"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp"
+            android:inputType="number">
+
+        </EditText>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/roundedbg"
+        android:orientation="vertical"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout1" >
+
+        <EditText
+            android:id="@+id/studentID"
+            android:layout_height="54dp"
+            android:layout_width="305dp"
+            android:background="@null"
+            android:hint="Student Number"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:textSize="16dp"

@@ -12,22 +12,24 @@ import android.view.View
 import android.view.Window
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import com.dev.edc.R
 
-class SignUpActivity : AppCompatActivity() {
-    lateinit var context: Context
+class SignUpActivityExistingUser : AppCompatActivity() {lateinit var context: Context
     lateinit var backButton: ImageView
     lateinit var trafficNumber: EditText
     lateinit var tryFileNo: EditText
     lateinit var proceedButton: ImageView
+    lateinit var studentNumber: EditText
     lateinit var  trafficNumberVal: String
     lateinit var  tryFileNoVal: String
     lateinit var car: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_sign_up_existing_user)
         context = this
         initialiseUI()
     }
@@ -37,6 +39,7 @@ class SignUpActivity : AppCompatActivity() {
         trafficNumber = findViewById(R.id.trafficNumber)
         tryFileNo = findViewById(R.id.tryFileNo)
         proceedButton = findViewById(R.id.proceedButton)
+        studentNumber = findViewById(R.id.studentID)
         car = findViewById(R.id.car)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         val carAnimation2: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_exit)
@@ -57,11 +60,14 @@ class SignUpActivity : AppCompatActivity() {
             } else if(tryFileNo.text.toString().trim().equals("")) {
                 showLoginErrorPopUp("Alert","Field cannot be empty")
 //            Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
+            } else if(studentNumber.text.toString().trim().equals("")) {
+                showLoginErrorPopUp("Alert","Field cannot be empty")
+//            Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else {
                 Log.e("Error","checking")
                 car.startAnimation(carAnimation2)
-                val intent = Intent(context, SignUpDetailActivity::class.java)
+                val intent = Intent(context, MainActivity::class.java)
 //                intent.putExtra("trafficNumber",trafficNumberVal)
 //                intent.putExtra("tryFileNo",tryFileNoVal)
                 intent.putExtra("trafficNumber",trafficNumber.text.toString())
