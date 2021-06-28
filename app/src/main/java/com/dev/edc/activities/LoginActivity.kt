@@ -41,15 +41,15 @@ class LoginActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
             if(userNameEdtTxt.text.toString().trim().equals("", ignoreCase = true)) {
-                showLoginErrorPopUp("Alert","Field cannot be empty")
+                showLoginErrorPopUp("Alert","Field cannot be empty.")
 //                Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else if (!AppUtils.isValidEmail(userNameEdtTxt.text.toString())) {
-                showLoginErrorPopUp("Alert","Enter Valid Email")
+                showLoginErrorPopUp("Alert","Enter a Valid Email.")
 //                Toast.makeText(this, "Enter Valid Email", Toast.LENGTH_SHORT).show();
             }
             else if (passwordEdtTxt.text.toString().equals("", ignoreCase = true)) {
-                showLoginErrorPopUp("Alert","Field cannot be empty")
+                showLoginErrorPopUp("Alert","Field cannot be empty.")
 //                Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else {
