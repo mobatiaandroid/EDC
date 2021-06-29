@@ -5,7 +5,7 @@
         android:duration="3000"
         android:repeatCount="0"/>
     <scale
-        android:duration="500"
+        android:duration="1000"
         android:fromXScale="3.0"
         android:fromYScale="3.0"
         android:pivotX="50%"

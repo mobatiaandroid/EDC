@@ -8,7 +8,7 @@
     tools:context=".activities.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/city1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -16,6 +16,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/car_bg" />
+
+    <!--<ImageView
+        android:id="@+id/city2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/car_bg"
+        tools:layout_editor_absoluteX="320dp"
+        tools:layout_editor_absoluteY="517dp" />-->
 
     <ImageView
         android:id="@+id/imageView4"
@@ -51,10 +60,10 @@
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
 
         <TextView
@@ -63,17 +72,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="Email ID"
-            android:alpha="0.5" />
+            android:alpha="0.5"
+            android:text="Email ID" />
+
         <EditText
             android:id="@+id/email"
-            android:layout_height="25dp"
             android:layout_width="match_parent"
-            android:background="@null"
-            android:hint=""
+            android:layout_height="25dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
+            android:background="@null"
+            android:hint=""
             android:inputType="textEmailAddress">
 
         </EditText>
@@ -101,8 +111,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
-            android:text="Confirm Password"
-            android:alpha="0.5" />
+            android:alpha="0.5"
+            android:text="Confirm Password" />
 
         <EditText
             android:id="@+id/password"

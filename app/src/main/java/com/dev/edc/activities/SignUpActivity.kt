@@ -80,9 +80,9 @@ class SignUpActivity : AppCompatActivity() {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.dialog_alert)
         val text = dialog.findViewById<View>(R.id.textDialog) as TextView
-        val textHead = dialog.findViewById<View>(R.id.alertHead) as TextView
+//        val textHead = dialog.findViewById<View>(R.id.alertHead) as TextView
         text.text = message
-        textHead.text = head
+//        textHead.text = head
         dialog.show()
     }
 }
