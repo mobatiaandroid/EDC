@@ -9,7 +9,15 @@ import android.media.Image
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.dev.edc.R
+import com.dev.edc.common_classes.ApiClient
+import com.dev.edc.common_classes.models.Courses
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var branch: TextView
@@ -19,8 +27,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var context: Context
     lateinit var backButton: ImageView
     lateinit var payButton: ImageView
+    lateinit var coursesObject: Courses
+    var vcFeeCd: String = ""
+    var vcFeeDesc: String = ""
+    var decAmount: String = ""
     val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
     val courses = arrayOf("LMV", "HMV", "HGMV")
+    lateinit var coursesList: ArrayList<Courses>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,28 +41,59 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initialiseUI() {
+        context = this
         backButton = findViewById(R.id.backButton)
-//        branch = findViewById(R.id.branch)
-//        selectBranch = findViewById(R.id.selectBranch)
-//        course = findViewById(R.id.course)
-//        selectCourse = findViewById(R.id.selectCourse)
+        branch = findViewById(R.id.branch)
+        selectBranch = findViewById(R.id.selectBranch)
+        course = findViewById(R.id.course)
+        selectCourse = findViewById(R.id.selectCourse)
         backButton.setOnClickListener {
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
         }
-//        selectBranch.setOnClickListener {
-//            showBranchListPopUp()
-//        }
-//        selectCourse.setOnClickListener {
-//            showCourseListPopUp()
-//        }
+        selectBranch.setOnClickListener {
+            showBranchListPopUp()
+        }
+        selectCourse.setOnClickListener {
+            showCourseListPopUp()
+        }
     }
 
     private fun showCourseListPopUp() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
+        val call: Call<ResponseBody> = ApiClient.getApiService().coursesListCall()
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val responseData = response.body()
+                if (responseData != null) {
+                    val jsonObject = JSONObject(responseData.string())
+                    if (jsonObject.has("status")) {
+                        val status = jsonObject.optString("status")
+                        if (status.equals("success")) {
+                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+                            for (i in 0 until responseArray.length()) {
+                                val dataObject = responseArray.getJSONObject(i.toString())
+                                coursesObject.vcFeeCd = dataObject.optString("vcFeeCd")
+                                coursesObject.vcFeeDesc = dataObject.optString("vcFeeDesc")
+                                coursesObject.decAmount = dataObject.optString("decAmount")
+                                coursesList.add(coursesObject)
+                                courses[i] = dataObject.optString("vcFeeDesc")
+                            }
+                        } else {
+                            Toast.makeText(context,"Some Error Occurred", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
         builder.setSingleChoiceItems(courses, checkedItem) { dialog, which ->
             checkedItem = which
 

@@ -14,6 +14,12 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import com.dev.edc.R
+import com.dev.edc.common_classes.ApiClient
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
     lateinit var context: Context
@@ -61,12 +67,38 @@ class SignUpActivity : AppCompatActivity() {
             else {
                 Log.e("Error","checking")
                 car.startAnimation(carAnimation2)
-                val intent = Intent(context, SignUpDetailActivity::class.java)
+                val call: Call<ResponseBody> = ApiClient.getApiService().validateStudentCall(
+                    "0",trafficNumber.text.toString(),tryFileNo.text.toString()
+                )
+                call.enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        val responseData = response.body()
+                        if (responseData != null) {
+                            val jsonObject = JSONObject(responseData.string())
+                            if (jsonObject.has("status")) {
+                                val status = jsonObject.optString("status")
+                                if (status.equals("success")) {
+                                    val intent = Intent(context, SignUpDetailActivity::class.java)
 //                intent.putExtra("trafficNumber",trafficNumberVal)
 //                intent.putExtra("tryFileNo",tryFileNoVal)
-                intent.putExtra("trafficNumber",trafficNumber.text.toString())
-                intent.putExtra("tryFileNo",tryFileNo.text.toString())
-                startActivity(intent)
+                                    intent.putExtra("trafficNumber",trafficNumber.text.toString())
+                                    intent.putExtra("tryFileNo",tryFileNo.text.toString())
+                                    startActivity(intent)
+                                }
+                            }
+                        }
+
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        showLoginErrorPopUp("Alert","Invalid Details")
+                    }
+
+                })
+
 
 
 //                overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)

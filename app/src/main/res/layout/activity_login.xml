@@ -9,22 +9,22 @@
 
     <ImageView
         android:id="@+id/city1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/car_bg" />
 
-    <!--<ImageView
+    <ImageView
         android:id="@+id/city2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/car_bg"
-        tools:layout_editor_absoluteX="320dp"
-        tools:layout_editor_absoluteY="517dp" />-->
+
+        app:layout_constraintBottom_toTopOf="@id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/city1"
+        app:srcCompat="@drawable/car_bg" />
 
     <ImageView
         android:id="@+id/imageView4"

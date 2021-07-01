@@ -32,11 +32,10 @@
 
     <ImageView
         android:id="@+id/city1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/car_bg" />
 
@@ -54,9 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        app:layout_constraintLeft_toRightOf="@id/city1"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/city1"
         app:srcCompat="@drawable/car_bg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -241,6 +241,40 @@ account and start learning"
         </EditText>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/roundedbg"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout5"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="6dp"
+            android:text="Email ID"
+            android:alpha="0.5"/>
+        <EditText
+            android:id="@+id/emailID"
+            android:layout_height="25dp"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:inputType="textEmailAddress">
+
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -250,7 +284,7 @@ account and start learning"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout5"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout12"
         android:orientation="horizontal">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="match_parent"

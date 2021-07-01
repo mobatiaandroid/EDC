@@ -10,12 +10,19 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
+import com.dev.edc.common_classes.ApiClient
+import com.dev.edc.common_classes.AppUtils
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -45,15 +52,203 @@ class SignUpDetailActivity : AppCompatActivity() {
     lateinit var  backButton: ImageView
     lateinit var  context: Context
     lateinit var  extras: Bundle
-    val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
-    val languages = arrayOf("English","Arabic","Chinese", "Spanish", "Hindi")
-    val nations = arrayOf("Emirati","Saudi","Bangladeshi","Indian","Pakistani")
+    lateinit var  emailID: EditText
+
+    var studentNumber = 791088
+    var unifiedID = 34166372
+    var languageID = ""
+    var languageName = ""
+    var countryID = ""
+    var countryCode = ""
+    var countryName = ""
+    var countryPhoneCode = ""
+    var branchID = ""
+    var branchName = ""
+    var branches : Array<String> = arrayOf()
+    var languages : Array<String> = arrayOf()
+    var nations : Array<String> = arrayOf()
     var calendar: Calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_detail)
-        context = this
+        setListValues()
         initialiseUI()
+
+    }
+
+    private fun setListValues() {
+        val call1: Call<ResponseBody> = ApiClient.getApiService().languagesListCall()
+        call1.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                val responseData = response.body()
+//                Log.e("Response",responseData.toString())
+//                if (responseData != null) {
+//                    val jsonObject = JSONObject(responseData.string())
+//                    if (jsonObject.has("status")) {
+//                        val status = jsonObject.optString("status")
+//                        if (status.equals("success")) {
+//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+//                            for (i in 0 until responseArray.length()) {
+//                                val dataObject = responseArray.getJSONObject(i.toString())
+//                                branchID =  dataObject.optString("id")
+//                                branchName = dataObject.optString("vcRegName")
+//                                branches[i] = branchName
+//                            }
+//
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
+        call2.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                val responseData = response.body()
+//                Log.e("Response",responseData.toString())
+//
+//                if (responseData != null) {
+//                    val jsonObject = JSONObject(responseData.string())
+//                    if (jsonObject.has("status")) {
+//                        val status = jsonObject.optString("status")
+//                        if (status.equals("success")) {
+//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+//                            for (i in 0 until responseArray.length()) {
+//                                val dataObject = responseArray.getJSONObject(i.toString())
+//                                countryID =  dataObject.optString("id")
+//                                countryCode = dataObject.optString("code")
+//                                countryName = dataObject.optString("name")
+//                                nations[i] = countryName
+//                            }
+//
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
+        call3.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                val responseData = response.body()
+//                Log.e("Response",responseData.toString())
+//                if (responseData != null) {
+//                    val jsonObject = JSONObject(responseData.string())
+//                    if (jsonObject.has("status")) {
+//                        val status = jsonObject.optString("status")
+//                        if (status.equals("success")) {
+//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+//                            for (i in 0 until responseArray.length()) {
+//                                val dataObject = responseArray.getJSONObject(i.toString())
+//                                languageID = dataObject.optString("id")
+//                                languageName = dataObject.optString("name")
+//                                languages[i] = languageName
+//                            }
+//
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun signUpCall() {
+        if (trafficNumber.text == "" ||
+            tryFileNo.text == "" ||
+            studentNumber.equals("") ||
+            unifiedID.equals("") ||
+            branch.text == "" ||
+            language.text == "" ||
+            nationality.text == "" ||
+            emailID.equals("") ||
+            password.equals("") ||
+            confirmPassword.equals("") ||
+            nameEnglish.equals("") ||
+            dateOfBirth.equals("") ||
+            emiratesID.equals("")
+            ){
+            showErrorPopUp("Fields Cannot be left Empty.")
+        } else if(!AppUtils.isValidEmail(emailID.text.toString())) {
+            showErrorPopUp("Enter a valid Email.")
+        } else if (password.text.toString() != confirmPassword.text.toString()) {
+            showErrorPopUp("Passwords do not match.")
+        } else {
+            signUpAPICall()
+        }
+    }
+
+    private fun signUpAPICall() {
+        val call: Call<ResponseBody> = ApiClient.getApiService().signUpCall(
+            "791088",
+            "34166372",
+            "1190133779",
+            "111210033012",
+            "1",
+            "",
+            "1",
+            "3",
+            "1",
+            "sanal.s@mobatia.com",
+            "123",
+            "",
+            "2",
+            "سيف الاسلام عبيد الحق",
+            "SAIFUL ISLAM OBAYDUL HOQUE",
+            "M",
+            "05-07-2000",
+            ""
+        )
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val responseData = response.body()
+                Log.e("Response",responseData.toString())
+                if (responseData != null) {
+                    val jsonObject = JSONObject(responseData.string())
+                    if (jsonObject.has("status")) {
+                        val status = jsonObject.optString("status")
+                        if (status.equals("success")) {
+                            showSignUpSuccessDialog(context)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun showErrorPopUp(message: String) {
+        val dialog = Dialog(context)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_alert)
+        val text = dialog.findViewById<View>(R.id.textDialog) as TextView
+//        val textHead = dialog.findViewById<View>(R.id.alertHead) as TextView
+        text.text = message
+//        textHead.text = head
+        dialog.show()
     }
 
     private fun initialiseUI() {
@@ -74,6 +269,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         showPassword = findViewById(R.id.showPassword)
         confirmPassword = findViewById(R.id.confirmPassword)
         showConfirmPassword = findViewById(R.id.showConfirmPassword)
+        emailID = findViewById(R.id.emailID)
         signUpButton = findViewById(R.id.signUpButton)
         backButton = findViewById(R.id.backButton)
         val pickDate =
@@ -145,12 +341,7 @@ class SignUpDetailActivity : AppCompatActivity() {
             showBranchListPopUp()
         }
         signUpButton.setOnClickListener {
-            if(nameArabic.text.isEmpty() || nameEnglish.text.isEmpty() || emiratesID.text.isEmpty() /*|| branch.text.isEmpty()*/) {
-                Toast.makeText(context,"Fields cannot be left empty",Toast.LENGTH_SHORT).show()
-            } else {
-                showSignUpSuccessDialog(context)
-            }
-
+            signUpCall()
         }
         selectDateOfBirth.setOnClickListener {
             DatePickerDialog(
@@ -161,12 +352,15 @@ class SignUpDetailActivity : AppCompatActivity() {
             )
                 .show()
         }
+
     }
 
     private fun showLanguagesListPopUp() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
+
+        languages = context.resources.getStringArray(R.array.languages)
         builder.setSingleChoiceItems(languages, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -183,6 +377,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
+        nations = context.resources.getStringArray(R.array.countries)
         builder.setSingleChoiceItems(nations, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -200,6 +395,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
+        branches = context.resources.getStringArray(R.array.branches)
         builder.setSingleChoiceItems(branches, checkedItem) { dialog, which ->
             checkedItem = which
 
@@ -211,6 +407,7 @@ class SignUpDetailActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+
 
 
     }
@@ -229,5 +426,22 @@ class SignUpDetailActivity : AppCompatActivity() {
             finish()
         }
         dialog.show()
+        val call3: Call<ResponseBody> = ApiClient.getApiService().sendConfirmEmailCall(
+            "sanal2net@gmail.com",
+            "SAIFUL ISLAM OBAYDUL HOQUE",
+            "سيف الاسلام عبيد الحق",
+            "1985-01-01T00:00:00"
+        )
+        call3.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+            }
+
+        })
+
     }
 }
