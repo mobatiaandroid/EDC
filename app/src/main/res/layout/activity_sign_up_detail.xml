@@ -198,7 +198,7 @@ account and start learning"
             android:layout_height="25dp"
             android:layout_width="match_parent"
             android:background="@null"
-            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="6dp"
             android:inputType="text">

@@ -20,6 +20,7 @@ import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
 import kotlinx.android.synthetic.main.validate_student_dialog.*
 import okhttp3.ResponseBody
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,10 +65,12 @@ class SignUpDetailActivity : AppCompatActivity() {
     var countryPhoneCode = ""
     var branchID = ""
     var branchName = ""
-    val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
+//    val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
 //    val languages = arrayOf("English","Arabic","Chinese", "Spanish", "Hindi")
+    var branches : Array<String> = arrayOf()
     var languages : Array<String> = arrayOf()
-    val nations = arrayOf("Emirati","Saudi","Bangladeshi","Indian","Pakistani")
+    var nations : Array<String> = arrayOf()
+//    val nations = arrayOf("Emirati","Saudi","Bangladeshi","Indian","Pakistani")
     var calendar: Calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,8 +106,8 @@ class SignUpDetailActivity : AppCompatActivity() {
             password.text.toString(),
             "",
             "2",
-            "سيف الاسلام عبيد الحق",
-            "SAIFUL ISLAM OBAYDUL HOQUE",
+            nameArabic.text.toString(),
+            nameEnglish.text.toString(),
             "M",
             "05-07-2000",
             ""
@@ -269,23 +272,32 @@ class SignUpDetailActivity : AppCompatActivity() {
                 val responseData = response.body()
                 Log.e("Response",responseData.toString())
                 if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject.has("status")) {
-                        val status = jsonObject.optString("status")
-                        if (status.equals("success")) {
-                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
-                            for (i in 0 until responseArray.length()) {
-                                val dataObject = responseArray.getJSONObject(i.toString())
-                                branchID =  dataObject.optString("id")
-                                branchName = dataObject.optString("vcRegName")
-                                branches[i] = branchName
+                    try {
+
+
+                        val jsonObject = JSONObject(responseData.string())
+                        if (jsonObject.has("status")) {
+                            val status = jsonObject.optString("status")
+                            if (status.equals("success")) {
+                                val responseArray: JSONArray = jsonObject.optJSONArray("languages")
+                                for (i in 0 until responseArray.length()) {
+                                    val dataObject = responseArray.getJSONObject(i)
+                                    countryID = dataObject.optString("id")
+                                    countryCode = dataObject.optString("code")
+                                    countryName = dataObject.optString("name")
+                                    nations[i] = countryName
+                                }
+
                             }
 
                         }
+                    } catch (e: Exception) {
+                       Log.e("Error",e.toString())
                     }
-                } else {
-                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-                }
+                    } else {
+                        Toast.makeText(context, "Some Error Occurred", Toast.LENGTH_SHORT).show()
+                    }
+
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -309,6 +321,38 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
+        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
+        call3.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val responseData = response.body()
+                Log.e("Response",responseData.toString())
+
+                if (responseData != null) {
+                    val jsonObject = JSONObject(responseData.string())
+                    if (jsonObject.has("status")) {
+                        val status = jsonObject.optString("status")
+                        if (status.equals("success")) {
+                            val responseArray: JSONObject = jsonObject.optJSONObject("countries")
+                            for (i in 0 until responseArray.length()) {
+                                val dataObject = responseArray.getJSONObject(i.toString())
+                                countryID =  dataObject.optString("id")
+                                countryCode = dataObject.optString("code")
+                                countryName = dataObject.optString("name")
+                                nations[i] = countryName
+                            }
+
+                        }
+                    }
+                } else {
+                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+            }
+
+        })
         builder.setSingleChoiceItems(nations, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -326,6 +370,36 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
+        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
+        call2.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val responseData = response.body()
+                Log.e("Response",responseData.toString())
+                if (responseData != null) {
+                    val jsonObject = JSONObject(responseData.string())
+                    if (jsonObject.has("status")) {
+                        val status = jsonObject.optString("status")
+                        if (status.equals("success")) {
+                            val responseArray: JSONObject = jsonObject.optJSONObject("countries")
+                            for (i in 0 until responseArray.length()) {
+                                val dataObject = responseArray.getJSONObject(i.toString())
+                                branchID =  dataObject.optString("id")
+                                branchName = dataObject.optString("vcRegName")
+                                branches[i] = branchName
+                            }
+
+                        }
+                    }
+                } else {
+                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+            }
+
+        })
         builder.setSingleChoiceItems(branches, checkedItem) { dialog, which ->
             checkedItem = which
 

@@ -189,7 +189,7 @@ class SignUpActivity : AppCompatActivity() {
                 intent.putExtra("birthDate",birthDate)
                 intent.putExtra("gender",gender)
                 intent.putExtra("trafficNumber",trafficNoVal)
-                intent.putExtra("tryFileNo", this.tryFileNoVal)
+                intent.putExtra("tryFileNo", tryFileNoVal)
                 intent.putExtra("email", email)
                 startActivity(intent)
             }

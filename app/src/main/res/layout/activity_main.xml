@@ -14,7 +14,7 @@
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/group6802" />
+        app:srcCompat="@drawable/back_btn" />
     <ScrollView
         app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -310,13 +310,13 @@
                     android:text="PAY"
                     android:textStyle="bold"
                     android:textSize="18dp"
-                    android:layout_marginLeft="180dp"
+                    android:layout_marginLeft="140dp"
                     android:textColor="@color/white"/>
                 <ImageView
                     android:id="@+id/arrow"
                     android:layout_width="40dp"
                     android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="1dp"
                     app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
                     tools:ignore="VectorDrawableCompat" />
 
