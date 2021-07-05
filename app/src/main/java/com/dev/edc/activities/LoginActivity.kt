@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var userNameEdtTxt: EditText
     lateinit var passwordEdtTxt: EditText
     lateinit var createAccount: TextView
-    lateinit var loginBtn: TextView
+    lateinit var loginBtn: ImageView
     lateinit var logo: ImageView
     lateinit var car: ImageView
     lateinit var city1: ImageView
@@ -46,41 +46,29 @@ class LoginActivity : AppCompatActivity() {
         loginBtn = findViewById(R.id.login)
         createAccount = findViewById(R.id.createAccount)
         car = findViewById(R.id.car)
-        city1 = findViewById(R.id.city1)
-        city2 = findViewById(R.id.city2)
+//        city1 = findViewById(R.id.city1)
+//        city2 = findViewById(R.id.city2)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
 
         loginBtn.setOnClickListener {
-            if(userNameEdtTxt.text.toString().trim().equals("", ignoreCase = true)) {
+            if(userNameEdtTxt.text.toString().trim().equals("")) {
                 showLoginErrorPopUp("Alert","Field cannot be empty.")
-//                Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else if (!AppUtils.isValidEmail(userNameEdtTxt.text.toString())) {
                 showLoginErrorPopUp("Alert","Enter a Valid Email.")
-//                Toast.makeText(this, "Enter Valid Email", Toast.LENGTH_SHORT).show();
             }
-            else if (passwordEdtTxt.text.toString().equals("", ignoreCase = true)) {
+            else if (passwordEdtTxt.text.toString().equals("")) {
                 showLoginErrorPopUp("Alert","Field cannot be empty.")
-//                Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else {
                 login()
-//                val intent = Intent(context, MainActivity::class.java)
-//                startActivity(intent)
-//                overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-//                finish()
             }
 
         }
         createAccount.setOnClickListener {
-//            car.startAnimation(carAnimation)
-//            Toast.makeText(this, "Being Clicked", Toast.LENGTH_SHORT).show()
-//            car.animate().translationX()
             val intent = Intent(context, AccountActivity::class.java)
             startActivity(intent)
-
-//            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
             overridePendingTransition(0,0)
 
             finish()
@@ -88,11 +76,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val call: Call<ResponseBody> = ApiClient.getApiService().loginCall(
-            userNameEdtTxt.text.toString(),
-            passwordEdtTxt.text.toString())
-        Log.e("userNameEdtTxt",userNameEdtTxt.text.toString())
-        Log.e("passwordEdtTxt",passwordEdtTxt.text.toString())
+        val call: Call<ResponseBody> = ApiClient.getApiService().loginCall(userNameEdtTxt.text.toString(), passwordEdtTxt.text.toString())
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val responseData = response.body()
@@ -122,14 +106,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoginErrorPopUp(head: String, message: String) {
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.dialog_alert)
         val text = dialog.findViewById<View>(R.id.textDialog) as TextView
-//        val textHead = dialog.findViewById<View>(R.id.alertHead) as TextView
         text.text = message
-//        textHead.text = head
         dialog.show()
     }
 

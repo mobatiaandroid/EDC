@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import com.dev.edc.R
+import com.dev.edc.activity.login.LoginActivityNew
 
 class SplashActivity : AppCompatActivity() {
     lateinit var logo: ImageView
@@ -36,10 +37,10 @@ class SplashActivity : AppCompatActivity() {
         city2.startAnimation(cityAnimation)
 
         Handler().postDelayed({
-            var intent: Intent = Intent(this, LoginActivity::class.java)
+            var intent: Intent = Intent(this, LoginActivityNew::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-//            overridePendingTransition(0,0)
+           // overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
+           overridePendingTransition(0,0)
             finish()
         },3000)
     }

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <ImageView
+        android:id="@+id/emailBgImg"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:srcCompat="@drawable/roundedbg" />
+
+    <TextView
+        android:id="@+id/emailHintTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Email ID"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="@+id/emailBgImg"
+        app:layout_constraintTop_toTopOf="@+id/emailBgImg" />
+
+    <EditText
+        android:id="@+id/emailTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/emailBgImg"
+        app:layout_constraintEnd_toEndOf="@+id/emailBgImg"
+        app:layout_constraintStart_toStartOf="@+id/emailHintTxt"
+        app:layout_constraintTop_toBottomOf="@+id/emailHintTxt" />
+
+    <ImageView
+        android:id="@+id/passwordBgImg"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/emailBgImg"
+        app:layout_constraintStart_toStartOf="@+id/emailBgImg"
+        app:layout_constraintTop_toBottomOf="@+id/emailBgImg"
+        app:srcCompat="@drawable/roundedbg" />
+
+    <TextView
+        android:id="@+id/passwordHintTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Confirm Password"
+        android:textSize="10dp"
+        app:layout_constraintStart_toStartOf="@+id/passwordBgImg"
+        app:layout_constraintTop_toTopOf="@+id/passwordBgImg" />
+
+    <EditText
+        android:id="@+id/passwordTxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordBgImg"
+        app:layout_constraintEnd_toStartOf="@+id/passwordHideShowImg"
+        app:layout_constraintStart_toStartOf="@+id/passwordHintTxt"
+        app:layout_constraintTop_toBottomOf="@+id/passwordHintTxt" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/curved_rectangle"
+        android:text="LOGIN"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/passwordBgImg"
+        app:layout_constraintStart_toStartOf="@+id/passwordBgImg"
+        app:layout_constraintTop_toBottomOf="@+id/passwordBgImg" />
+
+    <ImageView
+        android:id="@+id/passwordHideShowImg"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordBgImg"
+        app:layout_constraintEnd_toEndOf="@+id/passwordBgImg"
+        app:layout_constraintTop_toTopOf="@+id/passwordBgImg"
+        app:srcCompat="@drawable/previewicon" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <ImageView
+        android:id="@+id/buildingBgImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/car_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <ImageView
+        android:id="@+id/carImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/car" />
+
+    <TextView
+        android:id="@+id/createAccount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/buildingBgImg"
+        app:layout_constraintEnd_toEndOf="@+id/submitBtn"
+        app:layout_constraintStart_toStartOf="@+id/submitBtn"
+        app:layout_constraintTop_toBottomOf="@+id/submitBtn" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
