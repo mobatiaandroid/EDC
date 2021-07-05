@@ -64,111 +64,363 @@ class SignUpDetailActivity : AppCompatActivity() {
     var countryPhoneCode = ""
     var branchID = ""
     var branchName = ""
-    var branches : Array<String> = arrayOf()
-    var languages : Array<String> = arrayOf()
-    var nations : Array<String> = arrayOf()
+//    var branches : Array<String> = arrayOf()
+    val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
+    val languages = arrayOf("English", "Arabic")
+//    var languages : Array<String> = arrayOf()
+//    var nations : Array<String> = arrayOf()
+    val nations = arrayOf("India", "UAE")
+//    val nations = arrayOf("Afghanistan\n" +
+//        "Åland Islands\n" +
+//        "Albania\n" +
+//        "Algeria\n" +
+//        "American Samoa\n" +
+//        "Andorra\n" +
+//        "Angola\n" +
+//        "Anguilla\n" +
+//        "Antarctica\n" +
+//        "Antigua and Barbuda\n" +
+//        "Argentina\n" +
+//        "Armenia\n" +
+//        "Aruba\n" +
+//        "Australia\n" +
+//        "Austria\n" +
+//        "Azerbaijan\n" +
+//        "Bahamas\n" +
+//        "Bahrain\n" +
+//        "Bangladesh\n" +
+//        "Barbados\n" +
+//        "Belarus\n" +
+//        "Belgium\n" +
+//        "Belize\n" +
+//        "Benin\n" +
+//        "Bermuda\n" +
+//        "Bhutan\n" +
+//        "Bolivia (Plurinational State of)\n" +
+//        "Bonaire, Sint Eustatius and Saba\n" +
+//        "Bosnia and Herzegovina\n" +
+//        "Botswana\n" +
+//        "Bouvet Island\n" +
+//        "Brazil\n" +
+//        "British Indian Ocean Territory\n" +
+//        "Brunei Darussalam\n" +
+//        "Bulgaria\n" +
+//        "Burkina Faso\n" +
+//        "Burundi\n" +
+//        "Cabo Verde\n" +
+//        "Cambodia\n" +
+//        "Cameroon\n" +
+//        "Canada\n" +
+//        "Cayman Islands\n" +
+//        "Central African Republic\n" +
+//        "Chad\n" +
+//        "Chile\n" +
+//        "China\n" +
+//        "Christmas Island\n" +
+//        "Cocos (Keeling) Islands\n" +
+//        "Colombia\n" +
+//        "Comoros\n" +
+//        "Congo\n" +
+//        "Congo, Democratic Republic of the\n" +
+//        "Cook Islands\n" +
+//        "Costa Rica\n" +
+//        "Côte d'Ivoire\n" +
+//        "Croatia\n" +
+//        "Cuba\n" +
+//        "Curaçao\n" +
+//        "Cyprus\n" +
+//        "Czechia\n" +
+//        "Denmark\n" +
+//        "Djibouti\n" +
+//        "Dominica\n" +
+//        "Dominican Republic\n" +
+//        "Ecuador\n" +
+//        "Egypt\n" +
+//        "El Salvador\n" +
+//        "Equatorial Guinea\n" +
+//        "Eritrea\n" +
+//        "Estonia\n" +
+//        "Eswatini\n" +
+//        "Ethiopia\n" +
+//        "Falkland Islands (Malvinas)\n" +
+//        "Faroe Islands\n" +
+//        "Fiji\n" +
+//        "Finland\n" +
+//        "France\n" +
+//        "French Guiana\n" +
+//        "French Polynesia\n" +
+//        "French Southern Territories\n" +
+//        "Gabon\n" +
+//        "Gambia\n" +
+//        "Georgia\n" +
+//        "Germany\n" +
+//        "Ghana\n" +
+//        "Gibraltar\n" +
+//        "Greece\n" +
+//        "Greenland\n" +
+//        "Grenada\n" +
+//        "Guadeloupe\n" +
+//        "Guam\n" +
+//        "Guatemala\n" +
+//        "Guernsey\n" +
+//        "Guinea\n" +
+//        "Guinea-Bissau\n" +
+//        "Guyana\n" +
+//        "Haiti\n" +
+//        "Heard Island and McDonald Islands\n" +
+//        "Holy See\n" +
+//        "Honduras\n" +
+//        "Hong Kong\n" +
+//        "Hungary\n" +
+//        "Iceland\n" +
+//        "India\n" +
+//        "Indonesia\n" +
+//        "Iran (Islamic Republic of)\n" +
+//        "Iraq\n" +
+//        "Ireland\n" +
+//        "Isle of Man\n" +
+//        "Israel\n" +
+//        "Italy\n" +
+//        "Jamaica\n" +
+//        "Japan\n" +
+//        "Jersey\n" +
+//        "Jordan\n" +
+//        "Kazakhstan\n" +
+//        "Kenya\n" +
+//        "Kiribati\n" +
+//        "Korea (Democratic People's Republic of)\n" +
+//        "Korea, Republic of\n" +
+//        "Kuwait\n" +
+//        "Kyrgyzstan\n" +
+//        "Lao People's Democratic Republic\n" +
+//        "Latvia\n" +
+//        "Lebanon\n" +
+//        "Lesotho\n" +
+//        "Liberia\n" +
+//        "Libya\n" +
+//        "Liechtenstein\n" +
+//        "Lithuania\n" +
+//        "Luxembourg\n" +
+//        "Macao\n" +
+//        "Madagascar\n" +
+//        "Malawi\n" +
+//        "Malaysia\n" +
+//        "Maldives\n" +
+//        "Mali\n" +
+//        "Malta\n" +
+//        "Marshall Islands\n" +
+//        "Martinique\n" +
+//        "Mauritania\n" +
+//        "Mauritius\n" +
+//        "Mayotte\n" +
+//        "Mexico\n" +
+//        "Micronesia (Federated States of)\n" +
+//        "Moldova, Republic of\n" +
+//        "Monaco\n" +
+//        "Mongolia\n" +
+//        "Montenegro\n" +
+//        "Montserrat\n" +
+//        "Morocco\n" +
+//        "Mozambique\n" +
+//        "Myanmar\n" +
+//        "Namibia\n" +
+//        "Nauru\n" +
+//        "Nepal\n" +
+//        "Netherlands\n" +
+//        "New Caledonia\n" +
+//        "New Zealand\n" +
+//        "Nicaragua\n" +
+//        "Niger\n" +
+//        "Nigeria\n" +
+//        "Niue\n" +
+//        "Norfolk Island\n" +
+//        "North Macedonia\n" +
+//        "Northern Mariana Islands\n" +
+//        "Norway\n" +
+//        "Oman\n" +
+//        "Pakistan\n" +
+//        "Palau\n" +
+//        "Palestine, State of\n" +
+//        "Panama\n" +
+//        "Papua New Guinea\n" +
+//        "Paraguay\n" +
+//        "Peru\n" +
+//        "Philippines\n" +
+//        "Pitcairn\n" +
+//        "Poland\n" +
+//        "Portugal\n" +
+//        "Puerto Rico\n" +
+//        "Qatar\n" +
+//        "Réunion\n" +
+//        "Romania\n" +
+//        "Russian Federation\n" +
+//        "Rwanda\n" +
+//        "Saint Barthélemy\n" +
+//        "Saint Helena, Ascension and Tristan da Cunha\n" +
+//        "Saint Kitts and Nevis\n" +
+//        "Saint Lucia\n" +
+//        "Saint Martin (French part)\n" +
+//        "Saint Pierre and Miquelon\n" +
+//        "Saint Vincent and the Grenadines\n" +
+//        "Samoa\n" +
+//        "San Marino\n" +
+//        "Sao Tome and Principe\n" +
+//        "Saudi Arabia\n" +
+//        "Senegal\n" +
+//        "Serbia\n" +
+//        "Seychelles\n" +
+//        "Sierra Leone\n" +
+//        "Singapore\n" +
+//        "Sint Maarten (Dutch part)\n" +
+//        "Slovakia\n" +
+//        "Slovenia\n" +
+//        "Solomon Islands\n" +
+//        "Somalia\n" +
+//        "South Africa\n" +
+//        "South Georgia and the South Sandwich Islands\n" +
+//        "South Sudan\n" +
+//        "Spain\n" +
+//        "Sri Lanka\n" +
+//        "Sudan\n" +
+//        "Suriname\n" +
+//        "Svalbard and Jan Mayen\n" +
+//        "Sweden\n" +
+//        "Switzerland\n" +
+//        "Syrian Arab Republic\n" +
+//        "Taiwan, Province of China\n" +
+//        "Tajikistan\n" +
+//        "Tanzania, United Republic of\n" +
+//        "Thailand\n" +
+//        "Timor-Leste\n" +
+//        "Togo\n" +
+//        "Tokelau\n" +
+//        "Tonga\n" +
+//        "Trinidad and Tobago\n" +
+//        "Tunisia\n" +
+//        "Turkey\n" +
+//        "Turkmenistan\n" +
+//        "Turks and Caicos Islands\n" +
+//        "Tuvalu\n" +
+//        "Uganda\n" +
+//        "Ukraine\n" +
+//        "United Arab Emirates\n" +
+//        "United Kingdom of Great Britain and Northern Ireland\n" +
+//        "United States of America\n" +
+//        "United States Minor Outlying Islands\n" +
+//        "Uruguay\n" +
+//        "Uzbekistan\n" +
+//        "Vanuatu\n" +
+//        "Venezuela (Bolivarian Republic of)\n" +
+//        "Viet Nam\n" +
+//        "Virgin Islands (British)\n" +
+//        "Virgin Islands (U.S.)\n" +
+//        "Wallis and Futuna\n" +
+//        "Western Sahara\n" +
+//        "Yemen\n" +
+//        "Zambia\n" +
+//        "Zimbabwe")
     var calendar: Calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_detail)
-        setListValues()
+//        setListValues()
         initialiseUI()
 
     }
 
     private fun setListValues() {
-        val call1: Call<ResponseBody> = ApiClient.getApiService().languagesListCall()
-        call1.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                val responseData = response.body()
-//                Log.e("Response",responseData.toString())
-//                if (responseData != null) {
-//                    val jsonObject = JSONObject(responseData.string())
-//                    if (jsonObject.has("status")) {
-//                        val status = jsonObject.optString("status")
-//                        if (status.equals("success")) {
-//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
-//                            for (i in 0 until responseArray.length()) {
-//                                val dataObject = responseArray.getJSONObject(i.toString())
-//                                branchID =  dataObject.optString("id")
-//                                branchName = dataObject.optString("vcRegName")
-//                                branches[i] = branchName
-//                            }
+//        val call1: Call<ResponseBody> = ApiClient.getApiService().languagesListCall()
+//        call1.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+////                val responseData = response.body()
+////                Log.e("Response",responseData.toString())
+////                if (responseData != null) {
+////                    val jsonObject = JSONObject(responseData.string())
+////                    if (jsonObject.has("status")) {
+////                        val status = jsonObject.optString("status")
+////                        if (status.equals("success")) {
+////                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+////                            for (i in 0 until responseArray.length()) {
+////                                val dataObject = responseArray.getJSONObject(i.toString())
+////                                branchID =  dataObject.optString("id")
+////                                branchName = dataObject.optString("vcRegName")
+////                                branches[i] = branchName
+////                            }
+////
+////                        }
+////                    }
+////                } else {
+////                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+////                }
+//            }
 //
-//                        }
-//                    }
-//                } else {
-//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-//                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-            }
-
-        })
-        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
-        call2.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                val responseData = response.body()
-//                Log.e("Response",responseData.toString())
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//            }
 //
-//                if (responseData != null) {
-//                    val jsonObject = JSONObject(responseData.string())
-//                    if (jsonObject.has("status")) {
-//                        val status = jsonObject.optString("status")
-//                        if (status.equals("success")) {
-//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
-//                            for (i in 0 until responseArray.length()) {
-//                                val dataObject = responseArray.getJSONObject(i.toString())
-//                                countryID =  dataObject.optString("id")
-//                                countryCode = dataObject.optString("code")
-//                                countryName = dataObject.optString("name")
-//                                nations[i] = countryName
-//                            }
+//        })
+//        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
+//        call2.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+////                val responseData = response.body()
+////                Log.e("Response",responseData.toString())
+////
+////                if (responseData != null) {
+////                    val jsonObject = JSONObject(responseData.string())
+////                    if (jsonObject.has("status")) {
+////                        val status = jsonObject.optString("status")
+////                        if (status.equals("success")) {
+////                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+////                            for (i in 0 until responseArray.length()) {
+////                                val dataObject = responseArray.getJSONObject(i.toString())
+////                                countryID =  dataObject.optString("id")
+////                                countryCode = dataObject.optString("code")
+////                                countryName = dataObject.optString("name")
+////                                nations[i] = countryName
+////                            }
+////
+////                        }
+////                    }
+////                } else {
+////                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+////                }
+//            }
 //
-//                        }
-//                    }
-//                } else {
-//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-//                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-            }
-
-        })
-        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
-        call3.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                val responseData = response.body()
-//                Log.e("Response",responseData.toString())
-//                if (responseData != null) {
-//                    val jsonObject = JSONObject(responseData.string())
-//                    if (jsonObject.has("status")) {
-//                        val status = jsonObject.optString("status")
-//                        if (status.equals("success")) {
-//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
-//                            for (i in 0 until responseArray.length()) {
-//                                val dataObject = responseArray.getJSONObject(i.toString())
-//                                languageID = dataObject.optString("id")
-//                                languageName = dataObject.optString("name")
-//                                languages[i] = languageName
-//                            }
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//            }
 //
-//                        }
-//                    }
-//                } else {
-//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-//                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        })
+//        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
+//        call3.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+////                val responseData = response.body()
+////                Log.e("Response",responseData.toString())
+////                if (responseData != null) {
+////                    val jsonObject = JSONObject(responseData.string())
+////                    if (jsonObject.has("status")) {
+////                        val status = jsonObject.optString("status")
+////                        if (status.equals("success")) {
+////                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+////                            for (i in 0 until responseArray.length()) {
+////                                val dataObject = responseArray.getJSONObject(i.toString())
+////                                languageID = dataObject.optString("id")
+////                                languageName = dataObject.optString("name")
+////                                languages[i] = languageName
+////                            }
+////
+////                        }
+////                    }
+////                } else {
+////                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+////                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
     }
 
     private fun signUpCall() {
@@ -269,7 +521,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         showPassword = findViewById(R.id.showPassword)
         confirmPassword = findViewById(R.id.confirmPassword)
         showConfirmPassword = findViewById(R.id.showConfirmPassword)
-        emailID = findViewById(R.id.emailID)
+//        emailID = findViewById(R.id.emailID)
         signUpButton = findViewById(R.id.signUpButton)
         backButton = findViewById(R.id.backButton)
         val pickDate =
@@ -360,7 +612,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         builder.setTitle("Select")
         var checkedItem = -1
 
-        languages = context.resources.getStringArray(R.array.languages)
+//        languages = context.resources.getStringArray(R.array.languages)
         builder.setSingleChoiceItems(languages, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -377,7 +629,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
-        nations = context.resources.getStringArray(R.array.countries)
+//        nations = context.resources.getStringArray(R.array.countries)
         builder.setSingleChoiceItems(nations, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -395,7 +647,7 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
-        branches = context.resources.getStringArray(R.array.branches)
+//        branches = context.resources.getStringArray(R.array.branches)
         builder.setSingleChoiceItems(branches, checkedItem) { dialog, which ->
             checkedItem = which
 

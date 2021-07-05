@@ -240,7 +240,7 @@ account and start learning"
 
         </EditText>
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
         android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -273,7 +273,7 @@ account and start learning"
             android:inputType="textEmailAddress">
 
         </EditText>
-    </LinearLayout>
+    </LinearLayout>-->
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
@@ -284,7 +284,7 @@ account and start learning"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout12"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout5"
         android:orientation="horizontal">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="match_parent"
