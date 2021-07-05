@@ -38,8 +38,8 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             var intent: Intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-//            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-            overridePendingTransition(0,0)
+            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
+//            overridePendingTransition(0,0)
             finish()
         },3000)
     }

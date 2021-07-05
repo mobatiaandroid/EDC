@@ -75,6 +75,8 @@ class SignUpActivity : AppCompatActivity() {
             else {
                 Log.e("Error","checking")
                 car.startAnimation(carAnimation2)
+                city1.startAnimation(cityAnimation)
+                city2.startAnimation(cityAnimation)
                 val call: Call<ResponseBody> = ApiClient.getApiService().validateStudentCall(
                     "0",trafficNumber.text.toString(),tryFileNo.text.toString()
                 )

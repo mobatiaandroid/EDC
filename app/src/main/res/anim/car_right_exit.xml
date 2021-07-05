@@ -8,6 +8,6 @@
         android:fillAfter="true"
         android:fromXDelta="200"
         android:startOffset="0"
-        android:toXDelta="450" />
+        android:toXDelta="1000" />
 
 </set>
