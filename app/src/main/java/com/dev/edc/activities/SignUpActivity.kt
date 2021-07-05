@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -81,12 +82,15 @@ class SignUpActivity : AppCompatActivity() {
                             if (jsonObject.has("status")) {
                                 val status = jsonObject.optString("status")
                                 if (status.equals("success")) {
-                                    val intent = Intent(context, SignUpDetailActivity::class.java)
-//                intent.putExtra("trafficNumber",trafficNumberVal)
-//                intent.putExtra("tryFileNo",tryFileNoVal)
-                                    intent.putExtra("trafficNumber",trafficNumber.text.toString())
-                                    intent.putExtra("tryFileNo",tryFileNo.text.toString())
-                                    startActivity(intent)
+                                    val responseArray: JSONObject = jsonObject.optJSONObject("student_details")
+                                    val fullName: String = responseArray.optString("FullName")
+                                    val fullNameArabic: String = responseArray.optString("FullNameArabic")
+                                    val birthDate: String = responseArray.optString("BirthDate")
+                                    val gender: String = responseArray.optString("Gender")
+                                    val trafficNoVal = responseArray.optString("TrafficNo")
+                                    val tryFileNoVal = responseArray.optString("TryFileNo")
+                                    showValidateStudentPopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender)
+
                                 }
                             }
                         }
@@ -106,12 +110,100 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun showValidateStudentPopUp(
+        fullName: String,
+        fullNameArabic: String,
+        birthDate: String,
+        trafficNoVal: String,
+        tryFileNoVal: String,
+        gender: String
+    ) {
+        val dialog = Dialog(context!!)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.validate_student_dialog)
+        dialog.setCancelable(false)
+        var name = dialog.findViewById<View>(R.id.fullNameVal) as TextView
+        var nameArabic = dialog.findViewById<View>(R.id.fullNameArabicVal) as TextView
+        var dateOfBirth = dialog.findViewById<View>(R.id.dateOfBirthVal) as TextView
+        var trafficNo = dialog.findViewById<View>(R.id.trafficNumberVal)as TextView
+        var ok = dialog.findViewById<View>(R.id.ok)as TextView
+        var email = dialog.findViewById<View>(R.id.emailVal) as EditText
+        name.text = fullName.toString()
+        nameArabic.text = fullNameArabic.toString()
+        dateOfBirth.text = birthDate.toString()
+        trafficNo.text = trafficNoVal.toString()
+        dialog.show()
+        ok.setOnClickListener {
+            val call: Call<ResponseBody> = ApiClient.getApiService().sendConfirmEmailCall(
+                email.text.toString(),fullName,fullNameArabic,birthDate
+            )
+            call.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    showVerificationCodePopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender,email.text.toString())
+                }
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
+            dialog.dismiss()
+
+//            val intent = Intent(context, SignUpDetailActivity::class.java)
+//            intent.putExtra("fullName",fullName)
+//            intent.putExtra("fullNameArabic",fullNameArabic)
+//            intent.putExtra("birthDate",birthDate)
+//            intent.putExtra("gender",gender)
+//            intent.putExtra("trafficNumber",trafficNoVal)
+//            intent.putExtra("tryFileNo",tryFileNoVal)
+//            startActivity(intent)
+        }
+    }
+
+    private fun showVerificationCodePopUp(
+        fullName: String,
+        fullNameArabic: String,
+        birthDate: String,
+        trafficNoVal: String,
+        tryFileNoVal: String,
+        gender: String,
+        email: String
+    ) {
+        val dialog = Dialog(context!!)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.verification_alert)
+        var otp = dialog.findViewById<View>(R.id.otpVal) as EditText
+        var ok = dialog.findViewById<View>(R.id.ok)as TextView
+        ok.setOnClickListener {
+            if(otp.text.equals("")) {
+                showLoginErrorPopUp("Alert","Cannot be left Empty")
+            } else {
+                val intent = Intent(context, SignUpDetailActivity::class.java)
+                intent.putExtra("fullName",fullName)
+                intent.putExtra("fullNameArabic",fullNameArabic)
+                intent.putExtra("birthDate",birthDate)
+                intent.putExtra("gender",gender)
+                intent.putExtra("trafficNumber",trafficNoVal)
+                intent.putExtra("tryFileNo", this.tryFileNoVal)
+                intent.putExtra("email", email)
+                startActivity(intent)
+            }
+        }
+        dialog.show()
+    }
+
     private fun showLoginErrorPopUp(head: String, message: String) {
         val dialog = Dialog(context!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.dialog_alert)
         val text = dialog.findViewById<View>(R.id.textDialog) as TextView
+
 //        val textHead = dialog.findViewById<View>(R.id.alertHead) as TextView
         text.text = message
 //        textHead.text = head

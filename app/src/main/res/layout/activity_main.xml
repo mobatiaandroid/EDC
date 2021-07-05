@@ -78,7 +78,7 @@
                         android:id="@+id/selectBranch"
                         android:layout_width="22dp"
                         android:layout_height="10dp"
-                        app:srcCompat="@drawable/vector7"
+                        app:srcCompat="@drawable/dropdown_downarrow"
                         android:layout_marginRight="18dp"
                         android:layout_marginTop="24dp"
                         app:layout_constraintRight_toRightOf="parent"
@@ -131,7 +131,7 @@
                         android:id="@+id/selectCourse"
                         android:layout_width="22dp"
                         android:layout_height="10dp"
-                        app:srcCompat="@drawable/vector7"
+                        app:srcCompat="@drawable/dropdown_downarrow"
                         android:layout_marginRight="18dp"
                         android:layout_marginTop="24dp"
                         app:layout_constraintRight_toRightOf="parent"
@@ -166,7 +166,7 @@
 
 
                 <TableRow
-                    android:background="@drawable/rectangle"
+                    android:background="@drawable/table_row_bg"
                     android:gravity="center"
                     android:padding="20dp">
 
@@ -284,7 +284,43 @@
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
                 app:layout_constraintTop_toBottomOf="@id/table" />
 
-            <ImageView
+            <LinearLayout
+                android:layout_height="60dp"
+                android:layout_width="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/table"
+                app:layout_constraintStart_toStartOf="@+id/table"
+                app:layout_constraintTop_toBottomOf="@id/text2"
+                android:background="@drawable/curved_rectangle"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="871.50"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:id="@+id/pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PAY"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="180dp"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </LinearLayout>            <!--<ImageView
                 android:id="@+id/signUpButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -334,7 +370,7 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_marginRight="120dp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"/>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

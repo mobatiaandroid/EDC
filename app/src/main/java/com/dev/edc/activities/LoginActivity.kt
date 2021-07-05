@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var userNameEdtTxt: EditText
     lateinit var passwordEdtTxt: EditText
     lateinit var createAccount: TextView
-    lateinit var loginBtn: ImageView
+    lateinit var loginBtn: TextView
     lateinit var logo: ImageView
     lateinit var car: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -40,7 +40,7 @@
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/group6802" />
+        app:srcCompat="@drawable/back_btn" />
 
     <TextView
         android:id="@+id/textView3"
@@ -76,7 +76,7 @@ account and start learning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="@drawable/group1" />
+        app:srcCompat="@drawable/existing_user" />
 
     <ImageView
         android:id="@+id/existingUser"
@@ -86,7 +86,7 @@ account and start learning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newUser"
-        app:srcCompat="@drawable/group2" />
+        app:srcCompat="@drawable/new_user" />
     <ImageView
         android:id="@+id/car"
         android:layout_width="wrap_content"

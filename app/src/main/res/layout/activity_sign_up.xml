@@ -41,7 +41,7 @@
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/group6802" />
+        app:srcCompat="@drawable/back_btn" />
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -101,8 +101,8 @@ account and start learning"
         android:layout_marginTop="12dp"
         android:background="@drawable/roundedbg"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout1"
         app:layout_constraintTop_toBottomOf="@id/linearLayout1">
 
         <EditText
@@ -113,8 +113,8 @@ account and start learning"
             android:layout_marginRight="10dp"
             android:background="@null"
             android:hint="Try File No"
-            android:textSize="16dp"
-            android:inputType="number">
+            android:inputType="number"
+            android:textSize="16dp">
 
         </EditText>
 
@@ -124,10 +124,8 @@ account and start learning"
         android:id="@+id/proceedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout1"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:srcCompat="@drawable/next_btn" />
 
