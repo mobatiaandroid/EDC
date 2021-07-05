@@ -31,6 +31,8 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var  trafficNumberVal: String
     lateinit var  tryFileNoVal: String
     lateinit var car: ImageView
+    lateinit var city1: ImageView
+    lateinit var city2: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +47,13 @@ class SignUpActivity : AppCompatActivity() {
         tryFileNo = findViewById(R.id.tryFileNo)
         proceedButton = findViewById(R.id.proceedButton)
         car = findViewById(R.id.car)
+        city1 = findViewById(R.id.city1)
+        city2 = findViewById(R.id.city2)
+        val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         val carAnimation2: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_exit)
+        city1.startAnimation(cityAnimation)
+        city2.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
         backButton.setOnClickListener {
             val intent = Intent(context, AccountActivity::class.java)

@@ -31,6 +31,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var loginBtn: TextView
     lateinit var logo: ImageView
     lateinit var car: ImageView
+    lateinit var city1: ImageView
+    lateinit var city2: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -44,6 +46,9 @@ class LoginActivity : AppCompatActivity() {
         loginBtn = findViewById(R.id.login)
         createAccount = findViewById(R.id.createAccount)
         car = findViewById(R.id.car)
+        city1 = findViewById(R.id.city1)
+        city2 = findViewById(R.id.city2)
+        val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
 
         loginBtn.setOnClickListener {

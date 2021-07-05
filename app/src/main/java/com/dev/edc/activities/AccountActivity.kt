@@ -15,6 +15,8 @@ class AccountActivity : AppCompatActivity() {
     lateinit var backButton: ImageView
     lateinit var context: Context
     lateinit var car: ImageView
+    lateinit var city1: ImageView
+    lateinit var city2: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
@@ -27,7 +29,12 @@ class AccountActivity : AppCompatActivity() {
         existingUser = findViewById(R.id.existingUser)
         backButton = findViewById(R.id.backButton)
         car = findViewById(R.id.car)
+        city1 = findViewById(R.id.city1)
+        city2 = findViewById(R.id.city2)
+        val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
+        city1.startAnimation(cityAnimation)
+        city2.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
         backButton.setOnClickListener{
             val intent = Intent(context, LoginActivity::class.java)

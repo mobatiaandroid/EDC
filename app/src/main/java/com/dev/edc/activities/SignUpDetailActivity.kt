@@ -67,9 +67,15 @@ class SignUpDetailActivity : AppCompatActivity() {
     var branchName = ""
 //    val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
 //    val languages = arrayOf("English","Arabic","Chinese", "Spanish", "Hindi")
-    var branches : Array<String> = arrayOf()
-    var languages : Array<String> = arrayOf()
-    var nations : Array<String> = arrayOf()
+//    var branches : Array<String> = arrayOf()
+//    var languages : Array<String> = arrayOf()
+//    var nations : Array<String> = arrayOf()
+val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
+    val languages = arrayOf("English", "Arabic")
+    //    var languages : Array<String> = arrayOf()
+//    var nations : Array<String> = arrayOf()
+//    val nations = arrayOf("India", "UAE")
+        val nations = arrayOf("Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua & Deps", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Rep", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Congo {Democratic Rep}", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland {Republic}", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar, {Burma}", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia", "Saint Vincent & the Grenadines", "Samoa", "San Marino", "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe")
 //    val nations = arrayOf("Emirati","Saudi","Bangladeshi","Indian","Pakistani")
     var calendar: Calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,60 +85,6 @@ class SignUpDetailActivity : AppCompatActivity() {
         initialiseUI()
     }
 
-
-
-    private fun showErrorPopUp(message: String) {
-        val dialog = Dialog(context)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_alert)
-        val text = dialog.findViewById<View>(R.id.textDialog) as TextView
-        text.text = message
-        dialog.show()
-    }
-
-    private fun signUpAPICall() {
-        val call: Call<ResponseBody> = ApiClient.getApiService().signUpCall(
-            "791088",
-            "34166372",
-            "1190133779",
-            "111210033012",
-            "1",
-            "",
-            "1",
-            "3",
-            "1",
-            emailID.text.toString(),
-            password.text.toString(),
-            "",
-            "2",
-            nameArabic.text.toString(),
-            nameEnglish.text.toString(),
-            "M",
-            "05-07-2000",
-            ""
-        )
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val responseData = response.body()
-                Log.e("Response",responseData.toString())
-                if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject.has("status")) {
-                        val status = jsonObject.optString("status")
-                        if (status.equals("success")) {
-                            showSignUpSuccessDialog(context)
-                        }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
     private fun initialiseUI() {
         trafficNumber = findViewById(R.id.trafficNumber)
         tryFileNo = findViewById(R.id.tryFileNo)
@@ -228,28 +180,28 @@ class SignUpDetailActivity : AppCompatActivity() {
             showBranchListPopUp()
         }
         signUpButton.setOnClickListener {
-                if (trafficNumber.text == "" ||
-                    tryFileNo.text == "" ||
-                    studentNumber.equals("") ||
-                    unifiedID.equals("") ||
-                    branch.text == "" ||
-                    language.text == "" ||
-                    nationality.text == "" ||
-                    emailID.equals("") ||
-                    password.equals("") ||
-                    confirmPassword.equals("") ||
-                    nameEnglish.equals("") ||
-                    dateOfBirth.equals("") ||
-                    emiratesID.equals("")
-                ){
-                    showErrorPopUp("Fields Cannot be left Empty.")
-                } else if(!AppUtils.isValidEmail(emailID.text.toString())) {
-                    showErrorPopUp("Enter a valid Email.")
-                } else if (password.text.toString() != confirmPassword.text.toString()) {
-                    showErrorPopUp("Passwords do not match.")
-                } else {
-                    signUpAPICall()
-                }
+            if (trafficNumber.text == "" ||
+                tryFileNo.text == "" ||
+                studentNumber.equals("") ||
+                unifiedID.equals("") ||
+                branch.text == "" ||
+                language.text == "" ||
+                nationality.text == "" ||
+                emailID.equals("") ||
+                password.equals("") ||
+                confirmPassword.equals("") ||
+                nameEnglish.equals("") ||
+                dateOfBirth.equals("") ||
+                emiratesID.equals("")
+            ){
+                showErrorPopUp("Fields Cannot be left Empty.")
+            } else if(!AppUtils.isValidEmail(emailID.text.toString())) {
+                showErrorPopUp("Enter a valid Email.")
+            } else if (password.text.toString() != confirmPassword.text.toString()) {
+                showErrorPopUp("Passwords do not match.")
+            } else {
+                signUpAPICall()
+            }
         }
         selectDateOfBirth.setOnClickListener {
             DatePickerDialog(
@@ -262,49 +214,96 @@ class SignUpDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLanguagesListPopUp() {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("Select")
-        var checkedItem = -1
-        val call1: Call<ResponseBody> = ApiClient.getApiService().languagesListCall()
-        call1.enqueue(object : Callback<ResponseBody> {
+
+
+    private fun signUpAPICall() {
+        val call: Call<ResponseBody> = ApiClient.getApiService().signUpCall(
+            "791088",
+            "34166372",
+            "1190133779",
+            "111210033012",
+            "1",
+            "",
+            "1",
+            "3",
+            "1",
+            emailID.text.toString(),
+            password.text.toString(),
+            "",
+            "2",
+            nameArabic.text.toString(),
+            nameEnglish.text.toString(),
+            "M",
+            "05-07-2000",
+            ""
+        )
+        call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val responseData = response.body()
                 Log.e("Response",responseData.toString())
                 if (responseData != null) {
-                    try {
-
-
-                        val jsonObject = JSONObject(responseData.string())
-                        if (jsonObject.has("status")) {
-                            val status = jsonObject.optString("status")
-                            if (status.equals("success")) {
-                                val responseArray: JSONArray = jsonObject.optJSONArray("languages")
-                                for (i in 0 until responseArray.length()) {
-                                    val dataObject = responseArray.getJSONObject(i)
-                                    countryID = dataObject.optString("id")
-                                    countryCode = dataObject.optString("code")
-                                    countryName = dataObject.optString("name")
-                                    nations[i] = countryName
-                                }
-
-                            }
-
+                    val jsonObject = JSONObject(responseData.string())
+                    if (jsonObject.has("status")) {
+                        val status = jsonObject.optString("status")
+                        if (status.equals("success")) {
+                            showSignUpSuccessDialog(context)
                         }
-                    } catch (e: Exception) {
-                       Log.e("Error",e.toString())
                     }
-                    } else {
-                        Toast.makeText(context, "Some Error Occurred", Toast.LENGTH_SHORT).show()
-                    }
-
+                }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+                TODO("Not yet implemented")
             }
 
         })
+    }
+
+
+    private fun showLanguagesListPopUp() {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Select")
+        var checkedItem = -1
+//        val call1: Call<ResponseBody> = ApiClient.getApiService().languagesListCall()
+//        call1.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                val responseData = response.body()
+//                Log.e("Response",responseData.toString())
+//                if (responseData != null) {
+//                    try {
+//
+//
+//                        val jsonObject = JSONObject(responseData.string())
+//                        if (jsonObject.has("status")) {
+//                            val status = jsonObject.optString("status")
+//                            if (status.equals("success")) {
+//                                val responseArray: JSONArray = jsonObject.optJSONArray("languages")
+//                                Log.e("Response",responseArray.toString())
+//                                for (i in 0 until responseArray.length()) {
+//                                    val dataObject = responseArray.getJSONObject(i)
+//                                    countryID = dataObject.optString("id")
+//                                    countryCode = dataObject.optString("code")
+//                                    countryName = dataObject.optString("name")
+//                                    nations[i] = countryName
+//                                }
+//
+//                            }
+//
+//                        }
+//                    } catch (e: Exception) {
+//                       Log.e("Error",e.toString())
+//                    }
+//                    } else {
+//                        Toast.makeText(context, "Some Error Occurred", Toast.LENGTH_SHORT).show()
+//                    }
+//
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
         builder.setSingleChoiceItems(languages, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -321,38 +320,38 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
-        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
-        call3.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val responseData = response.body()
-                Log.e("Response",responseData.toString())
-
-                if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject.has("status")) {
-                        val status = jsonObject.optString("status")
-                        if (status.equals("success")) {
-                            val responseArray: JSONObject = jsonObject.optJSONObject("countries")
-                            for (i in 0 until responseArray.length()) {
-                                val dataObject = responseArray.getJSONObject(i.toString())
-                                countryID =  dataObject.optString("id")
-                                countryCode = dataObject.optString("code")
-                                countryName = dataObject.optString("name")
-                                nations[i] = countryName
-                            }
-
-                        }
-                    }
-                } else {
-                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
+//        call3.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                val responseData = response.body()
+//                Log.e("Response",responseData.toString())
+//
+//                if (responseData != null) {
+//                    val jsonObject = JSONObject(responseData.string())
+//                    if (jsonObject.has("status")) {
+//                        val status = jsonObject.optString("status")
+//                        if (status.equals("success")) {
+//                            val responseArray: JSONObject = jsonObject.optJSONObject("countries")
+//                            for (i in 0 until responseArray.length()) {
+//                                val dataObject = responseArray.getJSONObject(i.toString())
+//                                countryID =  dataObject.optString("id")
+//                                countryCode = dataObject.optString("code")
+//                                countryName = dataObject.optString("name")
+//                                nations[i] = countryName
+//                            }
+//
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
         builder.setSingleChoiceItems(nations, checkedItem) { dialog, which ->
             checkedItem = which
         }
@@ -370,36 +369,36 @@ class SignUpDetailActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Select")
         var checkedItem = -1
-        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
-        call2.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val responseData = response.body()
-                Log.e("Response",responseData.toString())
-                if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject.has("status")) {
-                        val status = jsonObject.optString("status")
-                        if (status.equals("success")) {
-                            val responseArray: JSONObject = jsonObject.optJSONObject("countries")
-                            for (i in 0 until responseArray.length()) {
-                                val dataObject = responseArray.getJSONObject(i.toString())
-                                branchID =  dataObject.optString("id")
-                                branchName = dataObject.optString("vcRegName")
-                                branches[i] = branchName
-                            }
-
-                        }
-                    }
-                } else {
-                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
+//        call2.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                val responseData = response.body()
+//                Log.e("Response",responseData.toString())
+//                if (responseData != null) {
+//                    val jsonObject = JSONObject(responseData.string())
+//                    if (jsonObject.has("status")) {
+//                        val status = jsonObject.optString("status")
+//                        if (status.equals("success")) {
+//                            val responseArray: JSONObject = jsonObject.optJSONObject("countries")
+//                            for (i in 0 until responseArray.length()) {
+//                                val dataObject = responseArray.getJSONObject(i.toString())
+//                                branchID =  dataObject.optString("id")
+//                                branchName = dataObject.optString("vcRegName")
+//                                branches[i] = branchName
+//                            }
+//
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                Toast.makeText(context,"Some Error Occurred",Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
         builder.setSingleChoiceItems(branches, checkedItem) { dialog, which ->
             checkedItem = which
 
@@ -428,6 +427,16 @@ class SignUpDetailActivity : AppCompatActivity() {
             startActivity(homeIntent)
             finish()
         }
+        dialog.show()
+    }
+
+    private fun showErrorPopUp(message: String) {
+        val dialog = Dialog(context)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.dialog_alert)
+        val text = dialog.findViewById<View>(R.id.textDialog) as TextView
+        text.text = message
         dialog.show()
     }
 }
