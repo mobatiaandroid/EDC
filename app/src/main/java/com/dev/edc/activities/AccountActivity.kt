@@ -33,8 +33,8 @@ class AccountActivity : AppCompatActivity() {
         city2 = findViewById(R.id.city2)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
-        city1.startAnimation(cityAnimation)
-        city2.startAnimation(cityAnimation)
+//        city1.startAnimation(cityAnimation)
+//        city2.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
         backButton.setOnClickListener{
             val intent = Intent(context, LoginActivity::class.java)
