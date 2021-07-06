@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -152,11 +151,24 @@ class SignUpActivity : AppCompatActivity() {
                     call: Call<ResponseBody>,
                     response: Response<ResponseBody>
                 ) {
-                    showVerificationCodePopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender,email.text.toString())
+                    val responseData = response.body()
+                    if (responseData != null) {
+                        val jsonObject = JSONObject(responseData.string())
+                        if (jsonObject.has("status")) {
+                            val status = jsonObject.optString("status")
+                            if (status.equals("success")) {
+                                val responseArray: JSONObject = jsonObject.optJSONObject("details")
+                                val otp: String = responseArray.optString("otp")
+                                showVerificationCodePopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender,email.text.toString(),otp)
+                            } else {
+                                showLoginErrorPopUp("Alert","Error Loading Data")
+                            }
+                        }
+                    }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    showLoginErrorPopUp("Alert","Error Loading Data")
                 }
             })
             dialog.dismiss()
@@ -179,27 +191,41 @@ class SignUpActivity : AppCompatActivity() {
         trafficNoVal: String,
         tryFileNoVal: String,
         gender: String,
-        email: String
+        email: String,
+        otpVal: String
     ) {
         val dialog = Dialog(context!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.verification_alert)
+        dialog.setCancelable(false)
         var otp = dialog.findViewById<View>(R.id.otpVal) as EditText
         var ok = dialog.findViewById<View>(R.id.ok)as TextView
+        var cancel = dialog.findViewById<View>(R.id.cancel_button)
+        cancel.setOnClickListener {
+            dialog.dismiss()
+        }
         ok.setOnClickListener {
+            Log.e("OTP",otpVal)
+            Log.e("OTP",otp.text.toString())
             if(otp.text.equals("")) {
                 showLoginErrorPopUp("Alert","Cannot be left Empty")
             } else {
-                val intent = Intent(context, SignUpDetailActivity::class.java)
-                intent.putExtra("fullName",fullName)
-                intent.putExtra("fullNameArabic",fullNameArabic)
-                intent.putExtra("birthDate",birthDate)
-                intent.putExtra("gender",gender)
-                intent.putExtra("trafficNumber",trafficNoVal)
-                intent.putExtra("tryFileNo", tryFileNoVal)
-                intent.putExtra("email", email)
-                startActivity(intent)
+                if (otp.text.toString().equals(otpVal)) {
+                    val intent = Intent(context, SignUpDetailActivity::class.java)
+                    intent.putExtra("fullName", fullName)
+                    intent.putExtra("fullNameArabic", fullNameArabic)
+                    intent.putExtra("birthDate", birthDate)
+                    intent.putExtra("gender", gender)
+                    intent.putExtra("trafficNumber", trafficNoVal)
+                    intent.putExtra("tryFileNo", tryFileNoVal)
+                    intent.putExtra("email", email)
+                    startActivity(intent)
+                } else if(otp.text.toString() == "") {
+                    showLoginErrorPopUp("Alert","Cannot be left Empty")
+                } else {
+                    showLoginErrorPopUp("Alert","Verification Code Invalid")
+                }
             }
         }
         dialog.show()

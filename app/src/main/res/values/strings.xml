@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">POCApp</string>
+    <string name="app_name">EDC</string>
     <string name="creatAccount"><u>Create Account</u></string>
     <string-array name="countries">
         <item>Afghanistan</item>
