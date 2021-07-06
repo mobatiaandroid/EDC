@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -28,7 +29,7 @@
                 android:id="@+id/b"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent" />
         </LinearLayout>
 
         <ImageView
@@ -37,9 +38,9 @@
             android:layout_height="50dp"
 
 
-            android:scaleType="fitCenter"
             android:background="@drawable/round"
-            android:src="@drawable/ic_baseline_error_24"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_check_circle_24"
             app:layout_constraintBottom_toBottomOf="@id/linearLayout2"
             app:layout_constraintEnd_toEndOf="@id/linearLayout2"
             app:layout_constraintStart_toStartOf="@id/linearLayout2"
@@ -48,53 +49,67 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_below="@+id/r"
         android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
         android:background="@drawable/dialog_bottom_curve_red"
-        android:orientation="vertical"
-        >
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/otp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="8dp"
             android:gravity="center_horizontal"
-            android:text="Enter Verification Code:"
+            android:text="Enter Verification Code"
             android:textColor="#ff000000"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
 
             android:id="@+id/otpVal"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="4dp"
             android:gravity="center_horizontal"
             android:inputType="textEmailAddress"
             android:text=""
             android:textColor="#ff000000"
-            app:layout_constraintLeft_toRightOf="@id/otp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/otp"
+            app:layout_constraintStart_toStartOf="@+id/otp"
+            app:layout_constraintTop_toBottomOf="@+id/otp" />
+
         <TextView
             android:id="@+id/ok"
             android:layout_width="100dp"
             android:layout_height="45dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/curved_rectangle"
             android:gravity="center"
-            android:text="OK"
+            android:text="Sign Up"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancel_button"
+            app:layout_constraintTop_toBottomOf="@+id/otpVal" />
+
+        <TextView
+            android:id="@+id/cancel_button"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/curved_rectangle_gray"
+            android:gravity="center"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/ok"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.87" />
+            app:layout_constraintTop_toBottomOf="@+id/otpVal" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

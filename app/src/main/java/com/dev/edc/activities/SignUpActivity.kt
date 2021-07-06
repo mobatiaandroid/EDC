@@ -137,13 +137,11 @@ class SignUpActivity : AppCompatActivity() {
         var name = dialog.findViewById<View>(R.id.fullNameVal) as TextView
         var nameArabic = dialog.findViewById<View>(R.id.fullNameArabicVal) as TextView
         var dateOfBirth = dialog.findViewById<View>(R.id.dateOfBirthVal) as TextView
-        var trafficNo = dialog.findViewById<View>(R.id.trafficNumberVal)as TextView
         var ok = dialog.findViewById<View>(R.id.ok)as TextView
         var email = dialog.findViewById<View>(R.id.emailVal) as EditText
         name.text = fullName.toString()
         nameArabic.text = fullNameArabic.toString()
         dateOfBirth.text = birthDate.toString()
-        trafficNo.text = trafficNoVal.toString()
         dialog.show()
         ok.setOnClickListener {
             val call: Call<ResponseBody> = ApiClient.getApiService().sendConfirmEmailCall(
