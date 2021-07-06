@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_btn" />
@@ -40,7 +40,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Create Account"
         android:textColor="@color/black"
         android:textSize="32dp"
@@ -50,7 +50,7 @@
     <TextView
         android:id="@+id/textView4"
         android:layout_width="0dp"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="24dp"
         android:text="Create your Emirates Driving Company
@@ -87,47 +87,44 @@ account and start learning"
         app:layout_constraintGuide_percent="0.7" />
 
     <EditText
-        android:id="@+id/studentID"
+        android:id="@+id/tryFileNo"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:padding="5dp"
         android:inputType="textPersonName"
-        android:hint="Student ID"
+        android:hint="File No"
         android:background="@drawable/roundedbg"
+        app:layout_constraintBottom_toTopOf="@+id/proceedButton"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/trafficNumber"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:padding="5dp"
         android:inputType="textPersonName"
         android:hint="Traffic Number"
         android:background="@drawable/roundedbg"
-        app:layout_constraintEnd_toEndOf="@+id/studentID"
-        app:layout_constraintStart_toStartOf="@+id/studentID"
-        app:layout_constraintTop_toBottomOf="@+id/studentID" />
+        app:layout_constraintBottom_toTopOf="@+id/tryFileNo"
+        app:layout_constraintEnd_toEndOf="@+id/tryFileNo"
+        app:layout_constraintStart_toStartOf="@+id/tryFileNo" />
 
     <EditText
-        android:id="@+id/tryFileNo"
+        android:id="@+id/studentID"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/roundedbg"
+        android:layout_height="65dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="File No"
         android:inputType="textPersonName"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/proceedButton"
+        android:hint="Student ID"
+        android:background="@drawable/roundedbg"
+        app:layout_constraintBottom_toTopOf="@+id/trafficNumber"
         app:layout_constraintEnd_toEndOf="@+id/trafficNumber"
-        app:layout_constraintStart_toStartOf="@+id/trafficNumber"
-        app:layout_constraintTop_toBottomOf="@+id/trafficNumber" />
+        app:layout_constraintStart_toStartOf="@+id/trafficNumber" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
