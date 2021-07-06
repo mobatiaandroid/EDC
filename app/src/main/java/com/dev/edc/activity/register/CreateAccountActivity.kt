@@ -31,6 +31,7 @@ class CreateAccountActivity : AppCompatActivity() {
     lateinit var textView21:TextView
     lateinit var newUserTxt:TextView
     lateinit var existingUserTxt:TextView
+    lateinit var backButton:ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
@@ -52,6 +53,7 @@ class CreateAccountActivity : AppCompatActivity() {
         newUserNextImg=findViewById(R.id.newUserNextImg)
         existingUserTxt=findViewById(R.id.existingUserTxt)
         existingUserNextImg=findViewById(R.id.existingUserNextImg)
+        backButton=findViewById(R.id.backImg)
         backImg.visibility=View.GONE
         createAccountTxt.visibility=View.GONE
         textView21.visibility=View.GONE
@@ -63,8 +65,8 @@ class CreateAccountActivity : AppCompatActivity() {
         existingUserNextImg.visibility=View.GONE
 
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
-        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_new)
-        city1.startAnimation(cityAnimation)
+        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
+//        city1.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
 
         Handler().postDelayed({
@@ -91,6 +93,14 @@ class CreateAccountActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(0,0)
 
+        }
+        backImg.setOnClickListener {
+            val intent = Intent(context, LoginActivityNew::class.java)
+            startActivity(intent)
+//            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
+            overridePendingTransition(0,0)
+
+            finish()
         }
     }
 }

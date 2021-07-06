@@ -127,21 +127,39 @@
         app:layout_constraintGuide_percent="0.7" />
 
     <ImageView
-        android:id="@+id/buildingBgImg"
+        android:id="@+id/city1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/car_bg"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/car_bg" />
+
+    <ImageView
+        android:id="@+id/city2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/city1"
+        app:srcCompat="@drawable/car_bg" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="#C4C4C4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/carImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/car" />
 
@@ -153,7 +171,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/buildingBgImg"
+        app:layout_constraintBottom_toTopOf="@+id/city1"
         app:layout_constraintEnd_toEndOf="@+id/submitBtn"
         app:layout_constraintStart_toStartOf="@+id/submitBtn"
         app:layout_constraintTop_toBottomOf="@+id/submitBtn" />

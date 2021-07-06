@@ -16,6 +16,7 @@ import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
+import com.dev.edc.activity.login.LoginActivityNew
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
 import kotlinx.android.synthetic.main.validate_student_dialog.*
@@ -423,7 +424,7 @@ val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
         val closeButton = dialog.findViewById<View>(R.id.close)
         closeButton.setOnClickListener {
             dialog.dismiss()
-            val homeIntent = Intent(context, LoginActivity::class.java)
+            val homeIntent = Intent(context, LoginActivityNew::class.java)
             startActivity(homeIntent)
             finish()
         }

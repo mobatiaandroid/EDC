@@ -15,6 +15,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import com.dev.edc.R
+import com.dev.edc.activity.register.CreateAccountActivity
 import com.dev.edc.common_classes.ApiClient
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -52,11 +53,11 @@ class SignUpActivity : AppCompatActivity() {
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         val carAnimation2: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_exit)
-        city1.startAnimation(cityAnimation)
-        city2.startAnimation(cityAnimation)
+//        city1.startAnimation(cityAnimation)
+//        city2.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
         backButton.setOnClickListener {
-            val intent = Intent(context, AccountActivity::class.java)
+            val intent = Intent(context, CreateAccountActivity::class.java)
             startActivity(intent)
             overridePendingTransition(0,0)
 //            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)

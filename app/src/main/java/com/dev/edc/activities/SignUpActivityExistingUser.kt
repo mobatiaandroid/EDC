@@ -53,7 +53,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {lateinit var context: Co
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         val carAnimation2: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_exit)
-        city1.startAnimation(cityAnimation)
+//        city1.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
         backButton.setOnClickListener {
             val intent = Intent(context, AccountActivity::class.java)

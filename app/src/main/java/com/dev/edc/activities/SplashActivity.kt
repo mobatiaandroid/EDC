@@ -33,8 +33,8 @@ class SplashActivity : AppCompatActivity() {
         )
         logo.startAnimation(animUpDown)
         car.startAnimation(carAnimation)
-        city1.startAnimation(cityAnimation)
-        city2.startAnimation(cityAnimation)
+//        city1.startAnimation(cityAnimation)
+//        city2.startAnimation(cityAnimation)
 
         Handler().postDelayed({
             var intent: Intent = Intent(this, LoginActivityNew::class.java)

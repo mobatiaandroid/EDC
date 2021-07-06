@@ -61,26 +61,26 @@ class LoginActivityNew : AppCompatActivity() {
         passwordHintTxt=findViewById(R.id.passwordHintTxt)
         passwordBgImg=findViewById(R.id.passwordBgImg)
         createAccount=findViewById(R.id.createAccount)
-        buildingBgImg=findViewById(R.id.buildingBgImg)
+        buildingBgImg=findViewById(R.id.city1)
         carImg=findViewById(R.id.carImg)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
-        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right)
+        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         var createAccunt="<font color=#000000>Don't have an account? </font> <font color=#F37021><u>Create Account</u></font>"
-        createAccount.setText(Html.fromHtml(createAccunt))
+        createAccount.text = Html.fromHtml(createAccunt)
         passwordHideShowImg.setOnClickListener(View.OnClickListener {
             if (passwordHideShown) {
                 passwordHideShown = false
-                passwordTxt.setTransformationMethod(PasswordTransformationMethod.getInstance())
+                passwordTxt.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
                 passwordHideShown = true
-                passwordTxt.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                passwordTxt.transformationMethod = HideReturnsTransformationMethod.getInstance();
             }
 
         })
 
         createAccount.setOnClickListener(View.OnClickListener {
 
-            buildingBgImg.startAnimation(cityAnimation)
+//            buildingBgImg.startAnimation(cityAnimation)
             carImg.startAnimation(carAnimation)
             val intent = Intent(context, CreateAccountActivity::class.java)
             startActivity(intent)
