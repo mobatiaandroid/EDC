@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.dev.edc.R
 import com.dev.edc.common_classes.ApiClient
+import com.dev.edc.common_classes.ProgressBarDialog
 import com.dev.edc.common_classes.models.Courses
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -28,10 +29,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var backButton: ImageView
     lateinit var payButton: ImageView
     lateinit var coursesObject: Courses
+    var progressBarDialog: ProgressBarDialog? = null
     var vcFeeCd: String = ""
     var vcFeeDesc: String = ""
     var decAmount: String = ""
-    val branches = arrayOf("Dubai", "Abu Dhabi", "Sharjah", "Al Ain", "Ajman")
+    val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
     val courses = arrayOf("LMV", "HMV", "HGMV")
     lateinit var coursesList: ArrayList<Courses>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialiseUI() {
         context = this
+        progressBarDialog = ProgressBarDialog(context)
         backButton = findViewById(R.id.backButton)
         branch = findViewById(R.id.branch)
         selectBranch = findViewById(R.id.selectBranch)
@@ -62,38 +65,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun showCourseListPopUp() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Select")
+        builder.setTitle("Select Course")
         var checkedItem = -1
-        val call: Call<ResponseBody> = ApiClient.getApiService().coursesListCall()
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val responseData = response.body()
-                if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject.has("status")) {
-                        val status = jsonObject.optString("status")
-                        if (status.equals("success")) {
-                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
-                            for (i in 0 until responseArray.length()) {
-                                val dataObject = responseArray.getJSONObject(i.toString())
-                                coursesObject.vcFeeCd = dataObject.optString("vcFeeCd")
-                                coursesObject.vcFeeDesc = dataObject.optString("vcFeeDesc")
-                                coursesObject.decAmount = dataObject.optString("decAmount")
-                                coursesList.add(coursesObject)
-                                courses[i] = dataObject.optString("vcFeeDesc")
-                            }
-                        } else {
-                            Toast.makeText(context,"Some Error Occurred", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
+//        val call: Call<ResponseBody> = ApiClient.getApiService().coursesListCall()
+//        progressBarDialog!!.show()
+//        call.enqueue(object : Callback<ResponseBody> {
+//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                progressBarDialog!!.dismiss()
+//                val responseData = response.body()
+//                if (responseData != null) {
+//                    val jsonObject = JSONObject(responseData.string())
+//                    if (jsonObject.has("status")) {
+//                        val status = jsonObject.optString("status")
+//                        if (status.equals("success")) {
+//                            val responseArray: JSONObject = jsonObject.optJSONObject("languages")
+//                            for (i in 0 until responseArray.length()) {
+//                                val dataObject = responseArray.getJSONObject(i.toString())
+//                                coursesObject.vcFeeCd = dataObject.optString("vcFeeCd")
+//                                coursesObject.vcFeeDesc = dataObject.optString("vcFeeDesc")
+//                                coursesObject.decAmount = dataObject.optString("decAmount")
+//                                coursesList.add(coursesObject)
+//                                courses[i] = dataObject.optString("vcFeeDesc")
+//                            }
+//                        } else {
+//                            Toast.makeText(context,"Some Error Occurred", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                progressBarDialog!!.dismiss()
+//            }
+//
+//        })
         builder.setSingleChoiceItems(courses, checkedItem) { dialog, which ->
             checkedItem = which
 
@@ -109,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBranchListPopUp() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Select")
+        builder.setTitle("Select Branch")
         var checkedItem = -1
         builder.setSingleChoiceItems(branches, checkedItem) { dialog, which ->
             checkedItem = which

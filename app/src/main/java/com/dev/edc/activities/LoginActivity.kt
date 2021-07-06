@@ -91,8 +91,10 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(intent)
                             overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
                             finish()
-                        } else {
+                        } else if (status.equals("invalid_user")) {
                             showLoginErrorPopUp("Alert", "Email and Password do not match")
+                        } else {
+                            showLoginErrorPopUp("Alert", "Some Error Occurred")
                         }
                     }
                 }

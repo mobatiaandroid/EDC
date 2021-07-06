@@ -10,6 +10,16 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
 
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="100dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_baseline_close_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
@@ -21,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/dialog_top_curve_red"
+                android:background="@drawable/curved_rectangle_white_top"
                 android:gravity="center"
                 android:scaleType="fitCenter" />
 
@@ -37,7 +47,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
 
-
+            android:visibility="gone"
             android:scaleType="fitCenter"
             android:background="@drawable/round"
             android:src="@drawable/ic_baseline_error_24"
@@ -49,11 +59,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_below="@+id/r"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
-        android:background="@drawable/dialog_bottom_curve_red"
+        android:background="@drawable/curved_rectangle_white_bottom"
         >
 
         <LinearLayout
@@ -366,13 +376,15 @@
 
         <TextView
             android:id="@+id/ok"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="35dp"
             android:background="@drawable/curved_rectangle"
             android:gravity="center"
             android:text="Verify Email"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

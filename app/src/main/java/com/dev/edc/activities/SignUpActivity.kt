@@ -16,6 +16,8 @@ import android.widget.*
 import com.dev.edc.R
 import com.dev.edc.activity.register.CreateAccountActivity
 import com.dev.edc.common_classes.ApiClient
+import com.dev.edc.common_classes.AppUtils
+import com.dev.edc.common_classes.ProgressBarDialog
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -33,6 +35,8 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var car: ImageView
     lateinit var city1: ImageView
     lateinit var city2: ImageView
+    var progressBarDialog: ProgressBarDialog? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +53,7 @@ class SignUpActivity : AppCompatActivity() {
         car = findViewById(R.id.car)
         city1 = findViewById(R.id.city1)
         city2 = findViewById(R.id.city2)
+        progressBarDialog = ProgressBarDialog(context)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         val carAnimation2: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_exit)
@@ -80,11 +85,14 @@ class SignUpActivity : AppCompatActivity() {
                 val call: Call<ResponseBody> = ApiClient.getApiService().validateStudentCall(
                     "0",trafficNumber.text.toString(),tryFileNo.text.toString()
                 )
+                progressBarDialog!!.show()
+
                 call.enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(
                         call: Call<ResponseBody>,
                         response: Response<ResponseBody>
                     ) {
+                        progressBarDialog!!.dismiss()
                         val responseData = response.body()
                         if (responseData != null) {
                             val jsonObject = JSONObject(responseData.string())
@@ -107,6 +115,7 @@ class SignUpActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        progressBarDialog!!.dismiss()
                         showLoginErrorPopUp("Alert","Invalid Details")
                     }
 
@@ -133,45 +142,70 @@ class SignUpActivity : AppCompatActivity() {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.validate_student_dialog)
         dialog.setCancelable(false)
+        var date = birthDate.substring(0,10)
         var name = dialog.findViewById<View>(R.id.fullNameVal) as TextView
         var nameArabic = dialog.findViewById<View>(R.id.fullNameArabicVal) as TextView
         var dateOfBirth = dialog.findViewById<View>(R.id.dateOfBirthVal) as TextView
         var ok = dialog.findViewById<View>(R.id.ok)as TextView
         var email = dialog.findViewById<View>(R.id.emailVal) as EditText
+        var close = dialog.findViewById<View>(R.id.close) as ImageView
         name.text = fullName.toString()
         nameArabic.text = fullNameArabic.toString()
-        dateOfBirth.text = birthDate.toString()
+        dateOfBirth.text = date.toString()
         dialog.show()
+        close.setOnClickListener {
+            dialog.dismiss()
+        }
         ok.setOnClickListener {
-            val call: Call<ResponseBody> = ApiClient.getApiService().sendConfirmEmailCall(
-                email.text.toString(),fullName,fullNameArabic,birthDate
-            )
-            call.enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
-                ) {
-                    val responseData = response.body()
-                    if (responseData != null) {
-                        val jsonObject = JSONObject(responseData.string())
-                        if (jsonObject.has("status")) {
-                            val status = jsonObject.optString("status")
-                            if (status.equals("success")) {
-                                val responseArray: JSONObject = jsonObject.optJSONObject("details")
-                                val otp: String = responseArray.optString("otp")
-                                showVerificationCodePopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender,email.text.toString(),otp)
-                            } else {
-                                showLoginErrorPopUp("Alert","Error Loading Data")
+            if (email.text.isEmpty()) {
+                showLoginErrorPopUp("Alert","Field Cannot be Left Empty")
+            } else if(!AppUtils.isValidEmail(email.text.toString())){
+                showLoginErrorPopUp("Alert","Enter a Valid Email")
+            } else {
+                val call: Call<ResponseBody> = ApiClient.getApiService().sendConfirmEmailCall(
+                    email.text.toString(), fullName, fullNameArabic, birthDate
+                )
+                progressBarDialog!!.show()
+
+                call.enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        progressBarDialog!!.dismiss()
+
+                        val responseData = response.body()
+                        if (responseData != null) {
+                            val jsonObject = JSONObject(responseData.string())
+                            if (jsonObject.has("status")) {
+                                val status = jsonObject.optString("status")
+                                if (status.equals("success")) {
+                                    val responseArray: JSONObject =
+                                        jsonObject.optJSONObject("details")
+                                    val otp: String = responseArray.optString("otp")
+                                    showVerificationCodePopUp(
+                                        fullName,
+                                        fullNameArabic,
+                                        birthDate,
+                                        trafficNoVal,
+                                        tryFileNoVal,
+                                        gender,
+                                        email.text.toString(),
+                                        otp
+                                    )
+                                } else {
+                                    showLoginErrorPopUp("Alert", "Error Loading Data")
+                                }
                             }
                         }
                     }
-                }
 
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    showLoginErrorPopUp("Alert","Error Loading Data")
-                }
-            })
-            dialog.dismiss()
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        progressBarDialog!!.dismiss()
+                        showLoginErrorPopUp("Alert", "Error Loading Data")
+                    }
+                })
+            }
 
 //            val intent = Intent(context, SignUpDetailActivity::class.java)
 //            intent.putExtra("fullName",fullName)

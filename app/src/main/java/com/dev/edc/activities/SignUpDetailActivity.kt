@@ -19,6 +19,7 @@ import com.dev.edc.R
 import com.dev.edc.activity.login.LoginActivityNew
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
+import com.dev.edc.common_classes.ProgressBarDialog
 import kotlinx.android.synthetic.main.validate_student_dialog.*
 import okhttp3.ResponseBody
 import org.json.JSONArray
@@ -56,6 +57,7 @@ class SignUpDetailActivity : AppCompatActivity() {
     lateinit var  context: Context
     lateinit var  extras: Bundle
     lateinit var  emailID: TextView
+    var progressBarDialog: ProgressBarDialog? = null
     var studentNumber = 791088
     var unifiedID = 34166372
     var languageID = ""
@@ -71,7 +73,7 @@ class SignUpDetailActivity : AppCompatActivity() {
 //    var branches : Array<String> = arrayOf()
 //    var languages : Array<String> = arrayOf()
 //    var nations : Array<String> = arrayOf()
-val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
+    val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
     val languages = arrayOf("English", "Arabic")
     //    var languages : Array<String> = arrayOf()
 //    var nations : Array<String> = arrayOf()
@@ -107,6 +109,7 @@ val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
         emailID = findViewById(R.id.emailID)
         signUpButton = findViewById(R.id.signUpButton)
         backButton = findViewById(R.id.backButton)
+        progressBarDialog = ProgressBarDialog(context)
         val pickDate =
             DatePickerDialog.OnDateSetListener { view1: DatePicker?, year: Int, month: Int, dayOfMonth: Int ->
                 calendar = Calendar.getInstance()
@@ -238,8 +241,10 @@ val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
             "05-07-2000",
             ""
         )
+        progressBarDialog!!.show()
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                progressBarDialog!!.dismiss()
                 val responseData = response.body()
                 Log.e("Response",responseData.toString())
                 if (responseData != null) {
@@ -254,7 +259,7 @@ val branches = arrayOf("Abu Dhabi", "Al Ain", "Delma Island", "Madinat Zayed")
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                TODO("Not yet implemented")
+                progressBarDialog!!.dismiss()
             }
 
         })

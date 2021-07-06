@@ -21,6 +21,7 @@ class CommonMethods {
         fun showLoginErrorPopUp(context:Context,head: String, message: String) {
             val dialog = Dialog(context)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(true)
             dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.setContentView(R.layout.dialog_alert)
             val text = dialog.findViewById<View>(R.id.textDialog) as TextView

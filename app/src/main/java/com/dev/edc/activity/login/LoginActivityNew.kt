@@ -22,6 +22,7 @@ import com.dev.edc.activities.MainActivity
 import com.dev.edc.activity.register.CreateAccountActivity
 import com.dev.edc.common.CommonMethods
 import com.dev.edc.common_classes.ApiClient
+import com.dev.edc.common_classes.ProgressBarDialog
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -42,6 +43,7 @@ class LoginActivityNew : AppCompatActivity() {
     lateinit var emailHintTxt:TextView
     lateinit var passwordHintTxt:TextView
     lateinit var createAccount:TextView
+    var progressBarDialog: ProgressBarDialog? = null
     var passwordHideShown:Boolean=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +65,7 @@ class LoginActivityNew : AppCompatActivity() {
         createAccount=findViewById(R.id.createAccount)
         buildingBgImg=findViewById(R.id.city1)
         carImg=findViewById(R.id.carImg)
+        progressBarDialog = ProgressBarDialog(context)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         var createAccunt="<font color=#000000>Don't have an account? </font> <font color=#F37021><u>Create Account</u></font>"
@@ -122,8 +125,10 @@ class LoginActivityNew : AppCompatActivity() {
     fun callLoginApi(email:String,password:String)
     {
         val call: Call<ResponseBody> = ApiClient.getApiService().loginCall(email, password)
+        progressBarDialog!!.show()
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                progressBarDialog!!.dismiss()
                 val responseData = response.body()
                 if (responseData != null) {
                     val jsonObject = JSONObject(responseData.string())
@@ -136,7 +141,9 @@ class LoginActivityNew : AppCompatActivity() {
                             startActivity(intent)
                             overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
                             finish()
-                        } else {
+                        } else if (status.equals("invalid_user")) {
+                            CommonMethods.showLoginErrorPopUp(context,"Alert", "Email and Password do not match")
+                        }else {
                             //CommonMethods.showLoginErrorPopUp(context,"Alert","Email and Password do not match")
                         }
                     }
@@ -144,6 +151,7 @@ class LoginActivityNew : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                progressBarDialog!!.dismiss()
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty.")
             }
 
