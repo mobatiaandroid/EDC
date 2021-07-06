@@ -25,13 +25,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_btn" />
@@ -40,112 +40,33 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Create Account"
         android:textColor="@color/black"
         android:textSize="32dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/backButton"
         app:layout_constraintTop_toBottomOf="@+id/backButton" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="314dp"
+        android:layout_width="0dp"
         android:layout_height="58dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
         android:layout_marginTop="6dp"
+        android:layout_marginEnd="24dp"
         android:text="Create your Emirates Driving Company
 account and start learning"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:background="@drawable/roundedbg"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/trafficNumber"
-            android:layout_height="54dp"
-            android:layout_width="305dp"
-            android:background="@null"
-            android:hint="Traffic Number"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="16dp"
-            android:inputType="number">
-
-        </EditText>
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:background="@drawable/roundedbg"
-        android:orientation="vertical"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout1" >
-
-        <EditText
-            android:id="@+id/studentID"
-            android:layout_height="54dp"
-            android:layout_width="305dp"
-            android:background="@null"
-            android:hint="Student Number"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="16dp"
-            android:inputType="number">
-
-        </EditText>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/roundedbg"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout1">
-
-        <EditText
-            android:id="@+id/tryFileNo"
-            android:layout_width="305dp"
-            android:layout_height="54dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@null"
-            android:hint="Try File No"
-            android:textSize="16dp"
-            android:inputType="number">
-
-        </EditText>
-
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/proceedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:srcCompat="@drawable/next_btn" />
 
     <ImageView
@@ -158,4 +79,56 @@ account and start learning"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/car" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <EditText
+        android:id="@+id/studentID"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:padding="5dp"
+        android:inputType="textPersonName"
+        android:hint="Student ID"
+        android:background="@drawable/roundedbg"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/trafficNumber"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:padding="5dp"
+        android:inputType="textPersonName"
+        android:hint="Traffic Number"
+        android:background="@drawable/roundedbg"
+        app:layout_constraintEnd_toEndOf="@+id/studentID"
+        app:layout_constraintStart_toStartOf="@+id/studentID"
+        app:layout_constraintTop_toBottomOf="@+id/studentID" />
+
+    <EditText
+        android:id="@+id/tryFileNo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/roundedbg"
+        android:ems="10"
+        android:hint="File No"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/proceedButton"
+        app:layout_constraintEnd_toEndOf="@+id/trafficNumber"
+        app:layout_constraintStart_toStartOf="@+id/trafficNumber"
+        app:layout_constraintTop_toBottomOf="@+id/trafficNumber" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--studentID  trafficNumber   tryFileNo -->
