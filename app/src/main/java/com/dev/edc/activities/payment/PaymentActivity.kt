@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Toast
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
 import com.dev.edc.activities.main.MainActivity
 import com.dev.edc.activities.main.model.Courses
+import com.dev.edc.activity.login.LoginActivityNew
 import com.dev.edc.common.CommonMethods
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.ProgressBarDialog
@@ -44,7 +46,7 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        CommonMethods.showLoginErrorPopUp(context,"Alert","Transaction Cancelled")
+//        CommonMethods.showLoginErrorPopUp(context,"Alert","Transaction Cancelled")
         val intent = Intent(context, MainActivity::class.java)
         startActivity(intent)
     }
@@ -85,6 +87,7 @@ class PaymentActivity : AppCompatActivity() {
                                 val request = CardPaymentRequest(authorization, code)
                                 val paymentClient = PaymentClient(context as Activity)
                                 paymentClient.launchCardPayment(request, 0)
+
                             }
                         }
                 }
@@ -106,8 +109,6 @@ class PaymentActivity : AppCompatActivity() {
         } else {
             if (requestCode == 0) {
                 val cardPaymentData = getFromIntent(data)
-                Log.d("PAYMM", cardPaymentData.code.toString())
-                Log.d("PAYMM", cardPaymentData.reason.toString())
                 if (cardPaymentData.code == 2) {
 
                     paymentSuccessCall(order_id,userID)
@@ -133,6 +134,10 @@ class PaymentActivity : AppCompatActivity() {
                         val status = jsonObject.optString("status")
                         if (status.equals("success")) {
                             CommonMethods.showLoginErrorPopUp(context,"Alert","Payment Successful")
+                            Handler().postDelayed({
+                                val intent = Intent(context, LoginActivityNew::class.java)
+                                startActivity(intent)
+                            },2000)
                         } else {
                             CommonMethods.showLoginErrorPopUp(context,"Alert","Cannot continue. Please try again later")
                         }

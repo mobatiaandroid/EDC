@@ -126,12 +126,15 @@ class MainActivity : AppCompatActivity() {
                 for (i in orderList.indices){
                     orderID.add(orderList[i].vcFeeCd)
                 }
-                val intent = Intent(context, PaymentActivity::class.java)
-                intent.putStringArrayListExtra("orderID", orderID)
+                if (total.text.toString().equals("0.0")) {
+                    CommonMethods.showLoginErrorPopUp(context,"Alert","No Course Selected")
+                    } else {
+                    val intent = Intent(context, PaymentActivity::class.java)
+                    intent.putStringArrayListExtra("orderID", orderID)
 //                intent.putExtra("coursesList", coursesList)
-                intent.putExtra("total",total.text.toString())
-                startActivity(intent)
-
+                    intent.putExtra("total", total.text.toString())
+                    startActivity(intent)
+                }
 
             } else {
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Check Internet Connection")

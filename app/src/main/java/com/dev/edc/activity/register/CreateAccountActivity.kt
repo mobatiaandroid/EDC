@@ -44,8 +44,8 @@ class CreateAccountActivity : AppCompatActivity() {
         city2=findViewById(R.id.city2)
 
         backImg=findViewById(R.id.backImg)
-        createAccountTxt=findViewById(R.id.createAccountTxt)
-        textView21=findViewById(R.id.textView21)
+        createAccountTxt=findViewById(R.id.textView3)
+        textView21=findViewById(R.id.textView4)
         imageView12=findViewById(R.id.imageView12)
         existingUserImg=findViewById(R.id.existingUserImg)
         newUserTxt=findViewById(R.id.newUserTxt)

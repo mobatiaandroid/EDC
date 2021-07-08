@@ -148,25 +148,50 @@
         app:layout_constraintGuide_percent="0.2" />
 
     <TextView
-        android:id="@+id/createAccountTxt"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="130dp"
         android:text="Create Account"
-        android:textSize="18sp"
-        android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="@+id/backImg"
-        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backImg" />
 
     <TextView
-        android:id="@+id/textView21"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:text="Create your Emirates Driving Company account and start learning"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintStart_toStartOf="@+id/createAccountTxt"
-        app:layout_constraintTop_toBottomOf="@+id/createAccountTxt" />
+        android:id="@+id/textView4"
+        android:layout_width="314dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="6dp"
+        android:text="Create your Emirates Driving Company
+account and start learning"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+<!--    <TextView-->
+<!--        android:id="@+id/createAccountTxt"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="Create Account"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#000000"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/backImg"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/guideline12" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView21"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:textSize="14sp"-->
+<!--        android:text="Create your Emirates Driving Company account and start learning"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/imageView12"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/createAccountTxt"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/createAccountTxt" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
