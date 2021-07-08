@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\anim-v21\\mtrl_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\anim-v21\\mtrl_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\anim-v21\\mtrl_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\anim-v21\\mtrl_bottom_sheet_slide_in.xml"
+    }
+]

@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_extended_fab_hide_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_extended_fab_hide_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\rotate_left_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\src\\main\\res\\animator\\rotate_left_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_chip_state_list_anim.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_chip_state_list_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_btn_state_list_anim.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_btn_state_list_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_extended_fab_change_size_collapse_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_extended_fab_change_size_collapse_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\linear_indeterminate_line1_tail_interpolator.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\linear_indeterminate_line1_tail_interpolator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\linear_indeterminate_line2_tail_interpolator.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\linear_indeterminate_line2_tail_interpolator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_btn_unelevated_state_list_anim.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_btn_unelevated_state_list_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\design_fab_show_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\design_fab_show_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_fab_hide_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_fab_hide_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_extended_fab_change_size_expand_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_extended_fab_change_size_expand_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_card_state_list_anim.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_card_state_list_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_fab_show_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_fab_show_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\design_fab_hide_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\design_fab_hide_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\rotate_right_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\src\\main\\res\\animator\\rotate_right_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\rotate_right_out.xml",
+        "source": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\src\\main\\res\\animator\\rotate_right_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\linear_indeterminate_line2_head_interpolator.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\linear_indeterminate_line2_head_interpolator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_extended_fab_state_list_animator.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_extended_fab_state_list_animator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\rotate_left_out.xml",
+        "source": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\src\\main\\res\\animator\\rotate_left_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\linear_indeterminate_line1_head_interpolator.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\linear_indeterminate_line1_head_interpolator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\animator\\mtrl_extended_fab_show_motion_spec.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\animator\\mtrl_extended_fab_show_motion_spec.xml"
+    }
+]

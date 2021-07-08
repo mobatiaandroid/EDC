@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,191",
+                        "endColumns": "135,140",
+                        "endOffsets": "186,327"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,191",
+                        "endColumns": "135,140",
+                        "endOffsets": "186,327"
+                    }
+                }
+            ]
+        }
+    ]
+}

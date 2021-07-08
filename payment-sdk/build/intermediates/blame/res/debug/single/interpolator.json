@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_0.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\mtrl_fast_out_linear_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\interpolator\\mtrl_fast_out_linear_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\fast_out_slow_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\fast_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\btn_checkbox_unchecked_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\mtrl_linear.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\interpolator\\mtrl_linear.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\mtrl_linear_out_slow_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\interpolator\\mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_1.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\btn_radio_to_on_mtrl_animation_interpolator_0.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\btn_radio_to_on_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\btn_radio_to_off_mtrl_animation_interpolator_0.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\btn_radio_to_off_mtrl_animation_interpolator_0.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\f657218ce88b9b780c5c6808dddaacd7\\appcompat-1.2.0\\res\\interpolator\\btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\interpolator\\mtrl_fast_out_slow_in.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\interpolator\\mtrl_fast_out_slow_in.xml"
+    }
+]

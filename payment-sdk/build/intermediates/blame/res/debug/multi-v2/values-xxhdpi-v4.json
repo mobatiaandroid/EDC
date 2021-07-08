@@ -1,0 +1,48 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xxhdpi-v4\\values-xxhdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\src\\main\\res\\values-xxhdpi\\dimens.xml",
+                    "from": {
+                        "startLines": "4,3,2",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "165,112,57",
+                        "endColumns": "51,51,53",
+                        "endOffsets": "212,159,106"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,107,159",
+                        "endColumns": "51,51,53",
+                        "endOffsets": "102,154,208"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\values-xxhdpi-v4\\values-xxhdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\src\\main\\res\\values-xxhdpi\\dimens.xml",
+                    "from": {
+                        "startLines": "4,3,2",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "165,112,57",
+                        "endColumns": "51,51,53",
+                        "endOffsets": "212,159,106"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,107,159",
+                        "endColumns": "51,51,53",
+                        "endOffsets": "102,154,208"
+                    }
+                }
+            ]
+        }
+    ]
+}

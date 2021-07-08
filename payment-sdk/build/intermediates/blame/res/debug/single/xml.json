@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\xml\\standalone_badge_gravity_top_start.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\xml\\standalone_badge_gravity_top_start.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\xml\\standalone_badge.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\xml\\standalone_badge.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\xml\\standalone_badge_gravity_bottom_start.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\xml\\standalone_badge_gravity_bottom_start.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\xml\\standalone_badge_offset.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\xml\\standalone_badge_offset.xml"
+    },
+    {
+        "merged": "C:\\Users\\Sanju Sabu\\AndroidStudioProjects\\POCApp\\payment-sdk\\build\\intermediates\\res\\merged\\debug\\xml\\standalone_badge_gravity_bottom_end.xml",
+        "source": "C:\\Users\\Sanju Sabu\\.gradle\\caches\\transforms-2\\files-2.1\\a5068ad6b94d8ff496c01cfc5b10b487\\material-1.4.0\\res\\xml\\standalone_badge_gravity_bottom_end.xml"
+    }
+]
