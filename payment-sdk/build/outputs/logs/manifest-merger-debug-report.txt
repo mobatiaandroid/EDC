@@ -1,0 +1,55 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+	package
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:3:5-38
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:1-17:12
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:5:5-15:19
+activity#payment.sdk.android.cardpayment.CardPaymentActivity
+ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:6:9-10:73
+	android:screenOrientation
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:8:13-47
+	android:windowSoftInputMode
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:10:13-70
+	android:theme
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:9:13-56
+	android:name
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:7:13-79
+activity#payment.sdk.android.cardpayment.threedsecure.ThreeDSecureWebViewActivity
+ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:12:9-14:60
+	android:theme
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:14:13-57
+	android:name
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:13:13-100
+uses-sdk
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml

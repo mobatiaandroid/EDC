@@ -1,0 +1,33 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="payment.sdk.android.sdk"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml
+10
+11    <application>
+11-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:5:5-15:19
+12        <activity
+12-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:6:9-10:73
+13            android:name="payment.sdk.android.cardpayment.CardPaymentActivity"
+13-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:7:13-79
+14            android:screenOrientation="behind"
+14-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:8:13-47
+15            android:theme="@style/SdkTheme.Translucent"
+15-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:9:13-56
+16            android:windowSoftInputMode="adjustResize|stateUnchanged" />
+16-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:10:13-70
+17        <activity
+17-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:12:9-14:60
+18            android:name="payment.sdk.android.cardpayment.threedsecure.ThreeDSecureWebViewActivity"
+18-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:13:13-100
+19            android:theme="@style/SdkTheme.ThreeDSecure" />
+19-->C:\Users\Sanju Sabu\AndroidStudioProjects\POCApp\payment-sdk\src\main\AndroidManifest.xml:14:13-57
+20    </application>
+21
+22</manifest>

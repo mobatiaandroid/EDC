@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel_button">إلغا</string>
+    <string name="card_cardholder_label_title">إسم صاحب البطاقة</string>
+    <string name="card_cvv_label_title">رقم cvv</string>
+    <string name="card_expiry_date_label_title">تاريخ الانتهاء</string>
+    <string name="card_number_label_title">رقم بطاقة الدفعإلغ</string>
+    <string name="cardholder_field_hint">إسم صاحب البطاقة</string>
+    <string name="cardholder_label_title">CARDHOLDER NAME</string>
+    <string name="error_card_not_supported">البطاقة غير مدعومة لهذه المعاملة</string>
+    <string name="error_message_card_cvv_invalid">رمز بطاقة CVV غير صالح</string>
+    <string name="error_message_card_end_date_invalid">تاريخ انتهاء البطاقة غير صالح</string>
+    <string name="error_message_card_numbers_multiple">تفاصيل بطاقة متعددة غير صالحة</string>
+    <string name="error_message_cardholder_name_invalid">اسم حامل البطاقة غير صالح</string>
+    <string name="error_message_default_generic">محتوى الحقل غير صالح</string>
+    <string name="error_message_pan_invalid">رقم بطاقة الائتمان غير صالح. يرجى التحقق من الرقم الموجود على البطاقة</string>
+    <string name="launching_3d_secure">إطلاق 3D الآمنة…</string>
+    <string name="message_authorizing">يجيز …</string>
+    <string name="message_loading_order_details">جارٍ تحميل تفاصيل الطلب …</string>
+    <string name="pay_button_title">قم بالدفعإلغا</string>
+    <string name="submitting_payment">تقديم الدفع…</string>
+</resources>

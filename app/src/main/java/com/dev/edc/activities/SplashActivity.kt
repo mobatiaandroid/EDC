@@ -42,6 +42,6 @@ class SplashActivity : AppCompatActivity() {
            // overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
            overridePendingTransition(0,0)
             finish()
-        },3000)
+        },2000)
     }
 }

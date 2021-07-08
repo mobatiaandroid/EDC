@@ -8,6 +8,6 @@
         android:fillAfter="true"
         android:fromYDelta="0%p"
         android:startOffset="800"
-        android:toYDelta="-450" />
+        android:toYDelta="-680" />
 
 </set>

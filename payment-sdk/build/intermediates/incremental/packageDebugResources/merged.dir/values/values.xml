@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="blue">#4885ED</color>
+    <color name="dark_blue">#315A9F</color>
+    <color name="dark_red">#AA0000</color>
+    <color name="light_grey">#F2F2F2</color>
+    <color name="red">#FF0000</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <dimen name="preview_text_font_size">14sp</dimen>
+    <integer name="flip_animation_duration">400</integer>
+    <integer name="flip_animation_duration_half">200</integer>
+    <string name="cancel_button">Cancel</string>
+    <string name="card_cardholder_label_title">Cardholder name</string>
+    <string name="card_cvv_label_title">CVV</string>
+    <string name="card_expiry_date_label_title">Expiry date</string>
+    <string name="card_number_label_title">Card number</string>
+    <string name="cardholder_field_hint">CARDHOLDER NAME</string>
+    <string name="cardholder_label_title">CARDHOLDER NAME</string>
+    <string name="error_card_not_supported">Card is not supported for this transaction</string>
+    <string name="error_message_card_cvv_invalid">The card CVV is not valid</string>
+    <string name="error_message_card_end_date_invalid">The card expiry date is not valid</string>
+    <string name="error_message_card_numbers_multiple">Multiple card details are not valid</string>
+    <string name="error_message_cardholder_name_invalid">The cardholder name is not valid</string>
+    <string name="error_message_default_generic">The field content is not valid</string>
+    <string name="error_message_pan_invalid">The credit card number is not valid. Please check the number on the card</string>
+    <string name="expires_end_label" translatable="false">EXPIRES\nEND</string>
+    <string name="launching_3d_secure">Launching 3D Secure…</string>
+    <string name="mask_card_number" translatable="false">#### #### #### ####</string>
+    <string name="mask_cvv" translatable="false">###</string>
+    <string name="mask_expire_date" translatable="false">##/##</string>
+    <string name="message_authorizing">Authorizing…</string>
+    <string name="message_loading_order_details">Loading order details…</string>
+    <string name="pay_button_title">Pay</string>
+    <string name="placeholder_card_number" translatable="false">0000 0000 0000 0000</string>
+    <string name="placeholder_cvv" translatable="false">000</string>
+    <string name="placeholder_expire_date" translatable="false">MM/YY</string>
+    <string name="placeholder_long_cvv" translatable="false">0000</string>
+    <string name="submitting_payment">Submitting payment…</string>
+    <style name="SdkTheme"/>
+    <style name="SdkTheme.PayButton" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/blue</item>
+        <item name="colorControlHighlight">@color/dark_blue</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="SdkTheme.ThreeDSecure" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/blue</item>
+    </style>
+    <style name="SdkTheme.Translucent" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowBackground">@drawable/bottom_sheet_background</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="colorAccent">@color/blue</item>
+    </style>
+    <declare-styleable name="NumericMaskedEditText">
+        <attr format="string" name="mask"/>
+        <attr format="string" name="placeHolder"/>
+    </declare-styleable>
+</resources>
