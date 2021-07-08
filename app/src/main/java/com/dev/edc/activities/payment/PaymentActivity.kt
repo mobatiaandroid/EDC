@@ -48,6 +48,7 @@ class PaymentActivity : AppCompatActivity() {
     override fun onBackPressed() {
 //        CommonMethods.showLoginErrorPopUp(context,"Alert","Transaction Cancelled")
         val intent = Intent(context, MainActivity::class.java)
+        intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
     private fun initaliseUI() {
@@ -106,6 +107,9 @@ class PaymentActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (data == null) {
             Toast.makeText(context, "Transaction cancelled", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, MainActivity::class.java)
+            intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
         } else {
             if (requestCode == 0) {
                 val cardPaymentData = getFromIntent(data)
@@ -114,6 +118,9 @@ class PaymentActivity : AppCompatActivity() {
                     paymentSuccessCall(order_id,userID)
                 } else {
                     Toast.makeText(context, "Transaction failed", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.flags = (Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
                 }
             }
         }
