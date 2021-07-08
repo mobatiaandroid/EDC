@@ -1,2 +1,5 @@
 rootProject.name = "POCApp"
 include ':app'
+include ':payment-sdk'
+include ':payment-sdk-samsungpay'
+include ':payment-sdk-core'
