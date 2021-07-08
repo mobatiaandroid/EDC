@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -90,10 +91,15 @@ class LoginActivity : AppCompatActivity() {
                         val status = jsonObject.optString("status")
                         if (status.equals("success")) {
                             CommonMethods.showLoginErrorPopUp(context,"Alert", "Successfully Logged In")
-                            val intent = Intent(context, MainActivity::class.java)
-                            startActivity(intent)
-                            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-                            finish()
+                            Handler().postDelayed({
+                                val intent = Intent(context, MainActivity::class.java)
+                                startActivity(intent)
+                                overridePendingTransition(
+                                    R.anim.fade_in_activity,
+                                    R.anim.fade_out_activity
+                                )
+                                finish()
+                            },2000)
                         } else if (status.equals("invalid_user")) {
                             CommonMethods.showLoginErrorPopUp(context,"Alert", "Email and Password do not match")
                         } else {
