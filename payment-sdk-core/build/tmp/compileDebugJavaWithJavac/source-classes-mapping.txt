@@ -1,0 +1,2 @@
+payment/sdk/android/sdk/core/BuildConfig.java
+ payment.sdk.android.sdk.core.BuildConfig

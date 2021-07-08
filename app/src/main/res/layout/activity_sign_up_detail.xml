@@ -274,7 +274,7 @@ account and start learning"
         </TextView>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/linearLayout6"
+        android:id="@+id/branchSelector"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="35dp"
@@ -322,7 +322,7 @@ account and start learning"
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/languageSelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -331,7 +331,7 @@ account and start learning"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout6"
+        app:layout_constraintTop_toBottomOf="@id/branchSelector"
         android:orientation="horizontal">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="60dp"
@@ -375,7 +375,7 @@ account and start learning"
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/linearLayout8"
+        android:id="@+id/nationalitySelector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
@@ -384,7 +384,7 @@ account and start learning"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout7"
+        app:layout_constraintTop_toBottomOf="@id/languageSelector"
         android:orientation="horizontal">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="60dp"
@@ -487,7 +487,7 @@ account and start learning"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/roundedbg"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout8"
+        app:layout_constraintTop_toBottomOf="@id/nationalitySelector"
         android:orientation="horizontal">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="60dp"

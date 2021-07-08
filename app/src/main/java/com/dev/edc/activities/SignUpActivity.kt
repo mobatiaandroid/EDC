@@ -186,7 +186,7 @@ class SignUpActivity : AppCompatActivity() {
                                     showVerificationCodePopUp(
                                         fullName,
                                         fullNameArabic,
-                                        birthDate,
+                                        date,
                                         trafficNoVal,
                                         tryFileNoVal,
                                         gender,

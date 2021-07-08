@@ -1,6 +1,7 @@
 package com.dev.edc.common_classes
 
 import android.provider.ContactsContract
+import com.dev.edc.activities.main.model.CourseResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Field
@@ -22,7 +23,7 @@ interface ApiService {
     fun educationListCall(): Call<ResponseBody>
 
     @GET("courses")
-    fun coursesListCall(): Call<ResponseBody>
+    fun coursesListCall(): Call<CourseResponse>
 
     @FormUrlEncoded
     @POST("validateStudent")

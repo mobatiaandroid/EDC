@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
+import com.dev.edc.activities.main.MainActivity
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
 import okhttp3.ResponseBody

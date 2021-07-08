@@ -41,11 +41,11 @@ class SignUpDetailActivity : AppCompatActivity() {
     lateinit var  nameArabic: TextView
     lateinit var  emiratesID: EditText
     lateinit var  branch: TextView
-    lateinit var  selectBranch: ImageView
+    lateinit var  selectBranch: LinearLayout
     lateinit var  language: TextView
-    lateinit var  selectLanguage: ImageView
+    lateinit var  selectLanguage: LinearLayout
     lateinit var  nationality: TextView
-    lateinit var  selectNationality: ImageView
+    lateinit var  selectNationality: LinearLayout
     lateinit var  dateOfBirth: TextView
     lateinit var  selectDateOfBirth: ImageView
     lateinit var  password: EditText
@@ -95,11 +95,11 @@ class SignUpDetailActivity : AppCompatActivity() {
         nameArabic = findViewById(R.id.nameInArabic)
         emiratesID = findViewById(R.id.emiratesID)
         branch = findViewById(R.id.branch)
-        selectBranch = findViewById(R.id.selectBranch)
+        selectBranch = findViewById(R.id.branchSelector)
         language = findViewById(R.id.language)
-        selectLanguage = findViewById(R.id.selectLanguage)
+        selectLanguage = findViewById(R.id.languageSelector)
         nationality = findViewById(R.id.nationality)
-        selectNationality = findViewById(R.id.selectNationality)
+        selectNationality = findViewById(R.id.nationalitySelector)
         dateOfBirth = findViewById(R.id.dateOfBirth)
         selectDateOfBirth = findViewById(R.id.selectDateOFBirth)
         password = findViewById(R.id.password)
@@ -268,7 +268,7 @@ class SignUpDetailActivity : AppCompatActivity() {
 
     private fun showLanguagesListPopUp() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Select")
+        builder.setTitle("Select Training Language")
         var checkedItem = -1
 //        val call1: Call<ResponseBody> = ApiClient.getApiService().languagesListCall()
 //        call1.enqueue(object : Callback<ResponseBody> {
@@ -324,7 +324,7 @@ class SignUpDetailActivity : AppCompatActivity() {
 
     private fun showNationsListPopUp() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Select")
+        builder.setTitle("Select Nationality")
         var checkedItem = -1
 //        val call3: Call<ResponseBody> = ApiClient.getApiService().countriesListCall()
 //        call3.enqueue(object : Callback<ResponseBody> {
@@ -373,7 +373,7 @@ class SignUpDetailActivity : AppCompatActivity() {
 
     private fun showBranchListPopUp() {
         val builder = AlertDialog.Builder(context)
-        builder.setTitle("Select")
+        builder.setTitle("Select Branch")
         var checkedItem = -1
 //        val call2: Call<ResponseBody> = ApiClient.getApiService().branchesListCall()
 //        call2.enqueue(object : Callback<ResponseBody> {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.main.MainActivity">
     <ImageView
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
             <LinearLayout
-                android:id="@+id/linearLayout7"
+                android:id="@+id/branchSelector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
@@ -101,7 +101,7 @@
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/linearLayout8"
+                android:id="@+id/courseSelector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
@@ -110,7 +110,7 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginRight="35dp"
                 android:background="@drawable/roundedbg"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout7"
+                app:layout_constraintTop_toBottomOf="@id/branchSelector"
                 android:orientation="horizontal">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_height="60dp"
@@ -160,9 +160,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:gravity="center"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout8"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+                app:layout_constraintEnd_toEndOf="@+id/courseSelector"
+                app:layout_constraintStart_toStartOf="@+id/courseSelector"
+                app:layout_constraintTop_toBottomOf="@+id/courseSelector">
 
 
                 <TableRow
@@ -171,7 +171,7 @@
                     android:padding="20dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="2dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Sl No" />
@@ -183,82 +183,24 @@
                         android:text="Description" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="3dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Amount" />
                 </TableRow>
-
-                <TableRow
-                    android:background="#FFFFFF"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="E Learning LV C1 Course" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="780.00" />
-                </TableRow>
-
-                <TableRow
-                    android:background="#FFFFFF"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="2" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Theory Test Light Vehicle" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="50.00" />
-                </TableRow>
-
-                <TableRow
-                    android:background="#FFFFFF"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="VAT" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="41.50" />
-                </TableRow>
-
+                
+                
             </TableLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/table"
+                app:layout_constraintStart_toStartOf="@+id/table"
+                app:layout_constraintTop_toBottomOf="@id/table">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/text2"
@@ -269,11 +211,11 @@
                 android:text="TOTAL"
                 android:textSize="16dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/text"
-                app:layout_constraintTop_toBottomOf="@id/table" />
+                app:layout_constraintEnd_toStartOf="@+id/totalPrice"
+                app:layout_constraintTop_toBottomOf="@id/recycler" />
 
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/totalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -281,8 +223,8 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout8"
-                app:layout_constraintTop_toBottomOf="@id/table" />
+                app:layout_constraintEnd_toEndOf="@+id/courseSelector"
+                app:layout_constraintTop_toBottomOf="@id/recycler" />
 
             <LinearLayout
                 android:layout_height="60dp"

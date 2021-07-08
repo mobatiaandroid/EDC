@@ -3,7 +3,6 @@ package com.dev.edc.activity.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.text.Html
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -17,8 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
-import com.dev.edc.activities.AccountActivity
-import com.dev.edc.activities.MainActivity
+import com.dev.edc.activities.main.MainActivity
 import com.dev.edc.activity.register.CreateAccountActivity
 import com.dev.edc.common.CommonMethods
 import com.dev.edc.common_classes.ApiClient
