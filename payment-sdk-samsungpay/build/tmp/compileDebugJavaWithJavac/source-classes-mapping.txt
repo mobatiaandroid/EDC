@@ -1,2 +1,0 @@
-payment/sdk/android/samsungpay/BuildConfig.java
- payment.sdk.android.samsungpay.BuildConfig

@@ -219,6 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="8dp"
                 android:text="871.50"
                 android:textColor="@color/black"
                 android:textSize="20dp"
@@ -227,6 +228,7 @@
                 app:layout_constraintTop_toBottomOf="@id/recycler" />
 
             <LinearLayout
+                android:id="@+id/payButton"
                 android:layout_height="60dp"
                 android:layout_width="0dp"
                 android:layout_marginTop="16dp"
@@ -237,6 +239,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
                 <TextView
+                    android:id="@+id/totalPrice2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="871.50"
@@ -252,7 +255,7 @@
                     android:text="PAY"
                     android:textStyle="bold"
                     android:textSize="18dp"
-                    android:layout_marginLeft="140dp"
+                    android:layout_marginLeft="130dp"
                     android:textColor="@color/white"/>
                 <ImageView
                     android:id="@+id/arrow"
@@ -262,57 +265,7 @@
                     app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
                     tools:ignore="VectorDrawableCompat" />
 
-            </LinearLayout>            <!--<ImageView
-                android:id="@+id/signUpButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/table"
-                app:layout_constraintStart_toStartOf="@+id/table"
-                app:layout_constraintTop_toBottomOf="@id/text2"
-                app:srcCompat="@drawable/component1" />
-
-            <ImageView
-                android:id="@+id/login"
-                android:layout_width="200dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="55dp"
-                android:background="#F37021"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text2" />
-
-            <ImageView
-                android:id="@+id/arrow"
-                android:layout_width="40dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="24dp"
-                app:layout_constraintRight_toRightOf="@id/signUpButton"
-                app:layout_constraintTop_toBottomOf="@id/text"
-                app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
-                tools:ignore="VectorDrawableCompat" />
-            <TextView
-                android:id="@+id/pay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toLeftOf="@id/arrow"
-                app:layout_constraintTop_toBottomOf="@id/text2"
-                android:layout_marginTop="42dp"
-                android:text="PAY"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toLeftOf="@id/pay"
-                app:layout_constraintTop_toBottomOf="@id/text2"
-                android:layout_marginTop="38dp"
-                android:text="871.50"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginRight="120dp"
-                android:textColor="@color/white"/>-->
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
