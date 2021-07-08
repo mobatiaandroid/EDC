@@ -6,7 +6,7 @@
     <translate
         android:duration="500"
         android:fillAfter="true"
-        android:fromXDelta="0%p"
+        android:fromXDelta="0"
         android:startOffset="0"
         android:toXDelta="200" />
 

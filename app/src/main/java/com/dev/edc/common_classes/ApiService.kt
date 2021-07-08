@@ -71,4 +71,19 @@ interface ApiService {
         @Field("FullNameAr") fullNameArabic: String,
         @Field("dob") dob: String
     ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("createOrder")
+    fun paymentCall(
+        @Field("user_id") userID: String,
+        @Field("course_ids") courseIDL: String,
+        @Field("total_amount") total: String
+    ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("confirmOrder")
+    fun paymentSuccessCall(
+        @Field("user_id") userID: String,
+        @Field("order_id") orderID: String
+    ): Call<ResponseBody>
 }

@@ -15,6 +15,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
 import com.dev.edc.activities.main.MainActivity
+import com.dev.edc.activity.register.CreateAccountActivity
+import com.dev.edc.common.CommonMethods
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
 import okhttp3.ResponseBody
@@ -54,13 +56,13 @@ class LoginActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
             if(userNameEdtTxt.text.toString().trim().equals("")) {
-                showLoginErrorPopUp("Alert","Field cannot be empty.")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty.")
             }
             else if (!AppUtils.isValidEmail(userNameEdtTxt.text.toString())) {
-                showLoginErrorPopUp("Alert","Enter a Valid Email.")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Enter a Valid Email.")
             }
             else if (passwordEdtTxt.text.toString().equals("")) {
-                showLoginErrorPopUp("Alert","Field cannot be empty.")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty.")
             }
             else {
                 login()
@@ -68,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
         createAccount.setOnClickListener {
-            val intent = Intent(context, AccountActivity::class.java)
+            val intent = Intent(context, CreateAccountActivity::class.java)
             startActivity(intent)
             overridePendingTransition(0,0)
 
@@ -87,35 +89,27 @@ class LoginActivity : AppCompatActivity() {
                     if (jsonObject.has("status")) {
                         val status = jsonObject.optString("status")
                         if (status.equals("success")) {
-                            showLoginErrorPopUp("Alert", "Successfully Logged In")
+                            CommonMethods.showLoginErrorPopUp(context,"Alert", "Successfully Logged In")
                             val intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                             overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
                             finish()
                         } else if (status.equals("invalid_user")) {
-                            showLoginErrorPopUp("Alert", "Email and Password do not match")
+                            CommonMethods.showLoginErrorPopUp(context,"Alert", "Email and Password do not match")
                         } else {
-                            showLoginErrorPopUp("Alert", "Some Error Occurred")
+                            CommonMethods.showLoginErrorPopUp(context,"Alert", "Some Error Occurred")
                         }
                     }
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                showLoginErrorPopUp("Alert", "Some Error Occurred")
+                CommonMethods.showLoginErrorPopUp(context,"Alert", "Some Error Occurred")
             }
 
         })
     }
 
-    private fun showLoginErrorPopUp(head: String, message: String) {
-        val dialog = Dialog(context)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_alert)
-        val text = dialog.findViewById<View>(R.id.textDialog) as TextView
-        text.text = message
-        dialog.show()
-    }
+
 
 }

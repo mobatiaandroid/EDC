@@ -8,6 +8,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import com.dev.edc.R
+import com.dev.edc.activities.sign_up.SignUpActivity
+import com.dev.edc.activities.sign_up.SignUpActivityExistingUser
+import com.dev.edc.activity.login.LoginActivityNew
 
 class AccountActivity : AppCompatActivity() {
     lateinit var newUser: ImageView
@@ -37,7 +40,7 @@ class AccountActivity : AppCompatActivity() {
 //        city2.startAnimation(cityAnimation)
         car.startAnimation(carAnimation)
         backButton.setOnClickListener{
-            val intent = Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, LoginActivityNew::class.java)
             startActivity(intent)
 //            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
             overridePendingTransition(0,0)

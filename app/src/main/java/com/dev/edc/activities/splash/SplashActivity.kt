@@ -1,7 +1,6 @@
-package com.dev.edc.activities
+package com.dev.edc.activities.splash
 
 import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler

@@ -11,9 +11,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
-import com.dev.edc.activities.LoginActivity
-import com.dev.edc.activities.SignUpActivity
-import com.dev.edc.activities.SignUpActivityExistingUser
+import com.dev.edc.activities.sign_up.SignUpActivity
+import com.dev.edc.activities.sign_up.SignUpActivityExistingUser
 import com.dev.edc.activity.login.LoginActivityNew
 
 class CreateAccountActivity : AppCompatActivity() {

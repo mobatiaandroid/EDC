@@ -3,7 +3,7 @@ package payment.sdk.android.cardpayment
 import payment.sdk.android.cardpayment.api.Body
 import payment.sdk.android.cardpayment.api.HttpClient
 import android.net.Uri
-import android.support.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting
 import org.json.JSONObject
 import payment.sdk.android.core.*
 

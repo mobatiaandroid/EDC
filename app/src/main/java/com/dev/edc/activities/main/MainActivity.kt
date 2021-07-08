@@ -20,9 +20,11 @@ import com.dev.edc.activities.main.adapter.CourseAdapter
 import com.dev.edc.activities.main.model.CourseResponse
 import com.dev.edc.activities.main.model.Courses
 import com.dev.edc.activities.payment.PaymentActivity
+import com.dev.edc.activity.login.LoginActivityNew
 import com.dev.edc.common.CommonMethods
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.ProgressBarDialog
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var payButton: LinearLayout
     var progressBarDialog: ProgressBarDialog? = null
     var no = 0
+    lateinit var orderID: ArrayList<String>
     var vcFeeCd: String = ""
     var vcFeeDesc: String = ""
     var decAmount: String = ""
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         coursesSelectorList = ArrayList()
         orderList = ArrayList()
         coursesList = ArrayList()
+        orderID = ArrayList()
         context = this
         progressBarDialog = ProgressBarDialog(context)
         backButton = findViewById(R.id.backButton)
@@ -106,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
 
         backButton.setOnClickListener {
-            val intent = Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, LoginActivityNew::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
         }
@@ -119,8 +123,15 @@ class MainActivity : AppCompatActivity() {
         }
         payButton.setOnClickListener {
             if (CommonMethods.isInternetAvailable(context)) {
+                for (i in orderList.indices){
+                    orderID.add(orderList[i].vcFeeCd)
+                }
                 val intent = Intent(context, PaymentActivity::class.java)
+                intent.putStringArrayListExtra("orderID", orderID)
+//                intent.putExtra("coursesList", coursesList)
+                intent.putExtra("total",total.text.toString())
                 startActivity(intent)
+
 
             } else {
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Check Internet Connection")

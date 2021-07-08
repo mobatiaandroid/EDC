@@ -1,4 +1,4 @@
-package com.dev.edc.activities
+package com.dev.edc.activities.sign_up_detail
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -16,13 +16,12 @@ import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.edc.R
+import com.dev.edc.activities.sign_up.SignUpActivity
 import com.dev.edc.activity.login.LoginActivityNew
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
 import com.dev.edc.common_classes.ProgressBarDialog
-import kotlinx.android.synthetic.main.validate_student_dialog.*
 import okhttp3.ResponseBody
-import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

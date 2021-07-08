@@ -10,6 +10,7 @@
     <View
         android:id="@+id/card_front_face_bg"
         android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_height="0dp"
         android:background="@drawable/card_background"
         android:contentDescription="@null"

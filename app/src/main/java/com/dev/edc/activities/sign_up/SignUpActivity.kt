@@ -1,4 +1,4 @@
-package com.dev.edc.activities
+package com.dev.edc.activities.sign_up
 
 import android.app.Dialog
 import android.content.Context
@@ -14,7 +14,9 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import com.dev.edc.R
+import com.dev.edc.activities.sign_up_detail.SignUpDetailActivity
 import com.dev.edc.activity.register.CreateAccountActivity
+import com.dev.edc.common.CommonMethods
 import com.dev.edc.common_classes.ApiClient
 import com.dev.edc.common_classes.AppUtils
 import com.dev.edc.common_classes.ProgressBarDialog
@@ -71,10 +73,10 @@ class SignUpActivity : AppCompatActivity() {
         proceedButton.setOnClickListener {
             Log.e("Button","Checking")
             if(trafficNumber.text.toString().trim().equals("")) {
-                showLoginErrorPopUp("Alert","Field cannot be empty")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
 //                Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             } else if(tryFileNo.text.toString().trim().equals("")) {
-                showLoginErrorPopUp("Alert","Field cannot be empty")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
 //            Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else {
@@ -116,7 +118,7 @@ class SignUpActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         progressBarDialog!!.dismiss()
-                        showLoginErrorPopUp("Alert","Invalid Details")
+                        CommonMethods.showLoginErrorPopUp(context,"Alert","Invalid Details")
                     }
 
                 })
@@ -158,9 +160,9 @@ class SignUpActivity : AppCompatActivity() {
         }
         ok.setOnClickListener {
             if (email.text.isEmpty()) {
-                showLoginErrorPopUp("Alert","Field Cannot be Left Empty")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Field Cannot be Left Empty")
             } else if(!AppUtils.isValidEmail(email.text.toString())){
-                showLoginErrorPopUp("Alert","Enter a Valid Email")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Enter a Valid Email")
             } else {
                 val call: Call<ResponseBody> = ApiClient.getApiService().sendConfirmEmailCall(
                     email.text.toString(), fullName, fullNameArabic, birthDate
@@ -194,7 +196,7 @@ class SignUpActivity : AppCompatActivity() {
                                         otp
                                     )
                                 } else {
-                                    showLoginErrorPopUp("Alert", "Error Loading Data")
+                                    CommonMethods.showLoginErrorPopUp(context,"Alert", "Error Loading Data")
                                 }
                             }
                         }
@@ -202,7 +204,7 @@ class SignUpActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         progressBarDialog!!.dismiss()
-                        showLoginErrorPopUp("Alert", "Error Loading Data")
+                        CommonMethods.showLoginErrorPopUp(context,"Alert", "Error Loading Data")
                     }
                 })
             }
@@ -243,7 +245,7 @@ class SignUpActivity : AppCompatActivity() {
             Log.e("OTP",otpVal)
             Log.e("OTP",otp.text.toString())
             if(otp.text.equals("")) {
-                showLoginErrorPopUp("Alert","Cannot be left Empty")
+                CommonMethods.showLoginErrorPopUp(context,"Alert","Cannot be left Empty")
             } else {
                 if (otp.text.toString().equals(otpVal)) {
                     val intent = Intent(context, SignUpDetailActivity::class.java)
@@ -256,25 +258,14 @@ class SignUpActivity : AppCompatActivity() {
                     intent.putExtra("email", email)
                     startActivity(intent)
                 } else if(otp.text.toString() == "") {
-                    showLoginErrorPopUp("Alert","Cannot be left Empty")
+                    CommonMethods.showLoginErrorPopUp(context,"Alert","Cannot be left Empty")
                 } else {
-                    showLoginErrorPopUp("Alert","Verification Code Invalid")
+                    CommonMethods.showLoginErrorPopUp(context,"Alert","Verification Code Invalid")
                 }
             }
         }
         dialog.show()
     }
 
-    private fun showLoginErrorPopUp(head: String, message: String) {
-        val dialog = Dialog(context!!)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.dialog_alert)
-        val text = dialog.findViewById<View>(R.id.textDialog) as TextView
 
-//        val textHead = dialog.findViewById<View>(R.id.alertHead) as TextView
-        text.text = message
-//        textHead.text = head
-        dialog.show()
-    }
 }
