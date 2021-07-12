@@ -79,8 +79,8 @@
             android:layout_gravity="left"
             android:layout_height="wrap_content"
             android:layout_below="@+id/alertHead"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
+            android:layout_marginStart="12dp"
             android:text="Confirm your account via the email reciever and you are ready to login."
 
             android:layout_marginLeft="4dp"

@@ -37,6 +37,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {
     lateinit var  trafficNumberVal: String
     lateinit var  tryFileNoVal: String
     lateinit var studentNumber: EditText
+
     lateinit var car: ImageView
     lateinit var city1: ImageView
     lateinit var city2: ImageView
@@ -45,7 +46,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_sign_up_existing_user)
         context = this
         initialiseUI()
     }
@@ -55,7 +56,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {
         trafficNumber = findViewById(R.id.trafficNumber)
         tryFileNo = findViewById(R.id.tryFileNo)
         proceedButton = findViewById(R.id.proceedButton)
-        studentNumber = findViewById(R.id.studentID)
+        studentNumber = findViewById<EditText>(R.id.studentID)
         car = findViewById(R.id.car)
         city1 = findViewById(R.id.city1)
         city2 = findViewById(R.id.city2)
@@ -78,7 +79,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {
             Log.e("Button","Checking")
             if(trafficNumber.text.toString().trim().equals("")) {
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
-            } else if(studentNumber.text.toString().trim().equals("")) {
+            } else if(studentNumber!!.text.toString().trim().equals("")) {
                 CommonMethods.showLoginErrorPopUp(context,"Alert", "Field cannot be empty")
             } else if(tryFileNo.text.toString().trim().equals("")) {
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
@@ -143,7 +144,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {
         tryFileNoVal: String,
         gender: String
     ) {
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.validate_student_dialog)
@@ -234,7 +235,7 @@ class SignUpActivityExistingUser : AppCompatActivity() {
         email: String,
         otpVal: String
     ) {
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.verification_alert)

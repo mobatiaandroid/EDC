@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -88,9 +89,13 @@ class CreateAccountActivity : AppCompatActivity() {
 //            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
         }
         existingUserImg.setOnClickListener {
-            val intent = Intent(context, SignUpActivityExistingUser::class.java)
+            try {
+            val intent = Intent(context, SignUpActivity::class.java)
             startActivity(intent)
             overridePendingTransition(0,0)
+                } catch (e:Exception) {
+                    Log.e("Error",e.toString())
+                }
 
         }
         backImg.setOnClickListener {

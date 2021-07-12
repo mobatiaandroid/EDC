@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
@@ -23,12 +24,12 @@ class SplashActivity : AppCompatActivity() {
         city1 = findViewById(R.id.city1)
         city2 = findViewById(R.id.city2)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
-        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right)
+        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         val fadeInAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.fade_in)
         logo.startAnimation(fadeInAnimation)
         val animUpDown: Animation = AnimationUtils.loadAnimation(
             applicationContext,
-            R.anim.up_anim
+            R.anim.logo_animation
         )
         logo.startAnimation(animUpDown)
         car.startAnimation(carAnimation)

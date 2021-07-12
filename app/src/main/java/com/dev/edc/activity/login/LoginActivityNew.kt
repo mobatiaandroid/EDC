@@ -3,6 +3,7 @@ package com.dev.edc.activity.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -34,6 +35,7 @@ class LoginActivityNew : AppCompatActivity() {
     lateinit var emailBgImg:ImageView
     lateinit var passwordBgImg:ImageView
     lateinit var buildingBgImg:ImageView
+    lateinit var buildingBgImg2:ImageView
     lateinit var carImg:ImageView
     lateinit var passwordTxt:EditText
     lateinit var emailTxt:EditText
@@ -41,6 +43,7 @@ class LoginActivityNew : AppCompatActivity() {
     lateinit var emailHintTxt:TextView
     lateinit var passwordHintTxt:TextView
     lateinit var createAccount:TextView
+    lateinit var logo:ImageView
     var progressBarDialog: ProgressBarDialog? = null
     var passwordHideShown:Boolean=false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,8 +65,38 @@ class LoginActivityNew : AppCompatActivity() {
         passwordBgImg=findViewById(R.id.passwordBgImg)
         createAccount=findViewById(R.id.createAccount)
         buildingBgImg=findViewById(R.id.city1)
+        buildingBgImg2=findViewById(R.id.city2)
+
         carImg=findViewById(R.id.carImg)
+        logo = findViewById(R.id.logo)
+        passwordHideShowImg.visibility=View.GONE
+        passwordTxt.visibility=View.GONE
+        submitBtn.visibility=View.GONE
+        emailTxt.visibility=View.GONE
+        emailBgImg.visibility=View.GONE
+        emailHintTxt.visibility=View.GONE
+        passwordHintTxt.visibility=View.GONE
+        passwordBgImg.visibility=View.GONE
+        createAccount.visibility=View.GONE
+
         progressBarDialog = ProgressBarDialog(context)
+        val animUpDown: Animation = AnimationUtils.loadAnimation(
+            applicationContext,
+            R.anim.logo_animation
+        )
+//        logo.startAnimation(animUpDown)
+        Handler().postDelayed({
+            passwordHideShowImg.visibility=View.VISIBLE
+            passwordTxt.visibility=View.VISIBLE
+            submitBtn.visibility=View.VISIBLE
+            emailTxt.visibility=View.VISIBLE
+            emailBgImg.visibility=View.VISIBLE
+            emailHintTxt.visibility=View.VISIBLE
+            passwordHintTxt.visibility=View.VISIBLE
+            passwordBgImg.visibility=View.VISIBLE
+            createAccount.visibility=View.VISIBLE
+
+        },1000)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
         val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
         var createAccunt="<font color=#000000>Don't have an account? </font> <font color=#F37021><u>Create Account</u></font>"
@@ -82,7 +115,7 @@ class LoginActivityNew : AppCompatActivity() {
         createAccount.setOnClickListener(View.OnClickListener {
 
 //            buildingBgImg.startAnimation(cityAnimation)
-            carImg.startAnimation(carAnimation)
+//            carImg.startAnimation(carAnimation)
             val intent = Intent(context, CreateAccountActivity::class.java)
             startActivity(intent)
             overridePendingTransition(0,0)
@@ -135,10 +168,15 @@ class LoginActivityNew : AppCompatActivity() {
                         val status = jsonObject.optString("status")
                         if (status.equals("success")) {
                             CommonMethods.showLoginErrorPopUp(context,"Alert","Successfully Logged In.")
-                            val intent = Intent(context, MainActivity::class.java)
-                            startActivity(intent)
-                            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-                            finish()
+                            Handler().postDelayed({
+                                val intent = Intent(context, MainActivity::class.java)
+                                startActivity(intent)
+                                overridePendingTransition(
+                                    R.anim.fade_in_activity,
+                                    R.anim.fade_out_activity
+                                )
+                                finish()
+                            },2000)
                         } else if (status.equals("invalid_user")) {
                             CommonMethods.showLoginErrorPopUp(context,"Alert", "Email and Password do not match")
                         }else {

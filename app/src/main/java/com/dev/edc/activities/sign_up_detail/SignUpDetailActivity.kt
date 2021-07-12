@@ -220,48 +220,73 @@ class SignUpDetailActivity : AppCompatActivity() {
 
 
     private fun signUpAPICall() {
-        val call: Call<ResponseBody> = ApiClient.getApiService().signUpCall(
-            "791088",
-            "34166372",
-            "1190133779",
-            "111210033012",
-            "1",
-            "",
-            "1",
-            "3",
-            "1",
-            emailID.text.toString(),
-            password.text.toString(),
-            "",
-            "2",
-            nameArabic.text.toString(),
-            nameEnglish.text.toString(),
-            "M",
-            "05-07-2000",
-            ""
-        )
-        progressBarDialog!!.show()
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                progressBarDialog!!.dismiss()
-                val responseData = response.body()
-                Log.e("Response",responseData.toString())
-                if (responseData != null) {
-                    val jsonObject = JSONObject(responseData.string())
-                    if (jsonObject.has("status")) {
-                        val status = jsonObject.optString("status")
-                        if (status.equals("success")) {
-                            showSignUpSuccessDialog(context)
+        if (trafficNumber.text == "" ||
+            tryFileNo.text == "" ||
+            studentNumber.equals("") ||
+            unifiedID.equals("") ||
+            branch.text == "" ||
+            language.text == "" ||
+            nationality.text == "" ||
+            emailID.equals("") ||
+            password.equals("") ||
+            confirmPassword.equals("") ||
+            nameEnglish.equals("") ||
+            dateOfBirth.equals("") ||
+            emiratesID.equals("")
+        ){
+            showErrorPopUp("Fields Cannot be left Empty.")
+        } else if(!AppUtils.isValidEmail(emailID.text.toString())) {
+            showErrorPopUp("Enter a valid Email.")
+        } else if (password.text.toString() != confirmPassword.text.toString()) {
+            showErrorPopUp("Passwords do not match.")
+        } else {
+
+            val call: Call<ResponseBody> = ApiClient.getApiService().signUpCall(
+                "791088",
+                "34166372",
+                "1190133779",
+                "111210033012",
+                "1",
+                "",
+                "1",
+                "3",
+                "1",
+                emailID.text.toString(),
+                password.text.toString(),
+                "",
+                "2",
+                nameArabic.text.toString(),
+                nameEnglish.text.toString(),
+                "M",
+                "05-07-2000",
+                ""
+            )
+            progressBarDialog!!.show()
+            call.enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(
+                    call: Call<ResponseBody>,
+                    response: Response<ResponseBody>
+                ) {
+                    progressBarDialog!!.dismiss()
+                    val responseData = response.body()
+                    Log.e("Response", responseData.toString())
+                    if (responseData != null) {
+                        val jsonObject = JSONObject(responseData.string())
+                        if (jsonObject.has("status")) {
+                            val status = jsonObject.optString("status")
+                            if (status.equals("success")) {
+                                showSignUpSuccessDialog(context)
+                            }
                         }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                progressBarDialog!!.dismiss()
-            }
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    progressBarDialog!!.dismiss()
+                }
 
-        })
+            })
+        }
     }
 
 
