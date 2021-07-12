@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         city1 = findViewById(R.id.city1)
         city2 = findViewById(R.id.city2)
         val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
-        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
+        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right)
         val fadeInAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.fade_in)
         logo.startAnimation(fadeInAnimation)
         val animUpDown: Animation = AnimationUtils.loadAnimation(

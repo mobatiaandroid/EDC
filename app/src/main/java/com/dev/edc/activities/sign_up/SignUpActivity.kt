@@ -73,9 +73,13 @@ class SignUpActivity : AppCompatActivity() {
         proceedButton.setOnClickListener {
             Log.e("Button","Checking")
             if(trafficNumber.text.toString().trim().equals("")) {
+                val shake = AnimationUtils.loadAnimation(context, R.anim.shake)
+                trafficNumber.startAnimation(shake)
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
 //                Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             } else if(tryFileNo.text.toString().trim().equals("")) {
+                val shake = AnimationUtils.loadAnimation(context, R.anim.shake)
+                tryFileNo.startAnimation(shake)
                 CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
 //            Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }

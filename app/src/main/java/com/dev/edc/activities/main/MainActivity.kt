@@ -6,10 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,6 +41,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var total: TextView
     lateinit var total2: TextView
     lateinit var payButton: LinearLayout
+    lateinit var totalText: TextView
+    lateinit var table: TableLayout
     var progressBarDialog: ProgressBarDialog? = null
     var no = 0
     lateinit var orderID: ArrayList<String>
@@ -76,10 +76,15 @@ class MainActivity : AppCompatActivity() {
         total = findViewById(R.id.totalPrice)
         total2 = findViewById(R.id.totalPrice2)
         payButton = findViewById(R.id.payButton)
+        totalText = findViewById(R.id.text2)
+        table = findViewById(R.id.table)
         total.text = "0.0"
         total2.text = "0.0"
 
-
+        payButton.visibility = View.GONE
+        total.visibility = View.GONE
+        text2.visibility = View.GONE
+        table.visibility = View.GONE
         val call: Call<CourseResponse> = ApiClient.getApiService().coursesListCall()
         progressBarDialog!!.show()
         call.enqueue(object : Callback<CourseResponse> {
@@ -154,8 +159,8 @@ class MainActivity : AppCompatActivity() {
 
         }
         builder.setPositiveButton("OK") { dialog, which ->
+            payButton.visibility = View.VISIBLE
             course.text = coursesSelectorList[checkedItem]
-
             orderList.add(coursesList[checkedItem])
             findTotal()
             val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
@@ -177,6 +182,17 @@ class MainActivity : AppCompatActivity() {
         }
         total.text = totalPrice.toString()
         total2.text = totalPrice.toString()
+        if (totalPrice == 0.0) {
+            total.visibility = View.GONE
+            payButton.visibility = View.GONE
+            text2.visibility = View.GONE
+            table.visibility = View.GONE
+        } else {
+            total.visibility = View.VISIBLE
+            payButton.visibility = View.VISIBLE
+            text2.visibility = View.VISIBLE
+            table.visibility = View.VISIBLE
+        }
     }
 
     private fun showBranchListPopUp() {

@@ -53,7 +53,6 @@ class CreateAccountActivity : AppCompatActivity() {
         newUserNextImg=findViewById(R.id.newUserNextImg)
         existingUserTxt=findViewById(R.id.existingUserTxt)
         existingUserNextImg=findViewById(R.id.existingUserNextImg)
-        backButton=findViewById(R.id.backImg)
         backImg.visibility=View.GONE
         createAccountTxt.visibility=View.GONE
         textView21.visibility=View.GONE
@@ -90,7 +89,7 @@ class CreateAccountActivity : AppCompatActivity() {
         }
         existingUserImg.setOnClickListener {
             try {
-            val intent = Intent(context, SignUpActivity::class.java)
+            val intent = Intent(context, SignUpActivityExistingUser::class.java)
             startActivity(intent)
             overridePendingTransition(0,0)
                 } catch (e:Exception) {

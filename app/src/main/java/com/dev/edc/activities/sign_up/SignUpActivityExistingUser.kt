@@ -27,6 +27,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class SignUpActivityExistingUser : AppCompatActivity() {
     lateinit var context: Context
@@ -52,87 +53,104 @@ class SignUpActivityExistingUser : AppCompatActivity() {
     }
 
     private fun initialiseUI() {
-        backButton = findViewById(R.id.backButton)
-        trafficNumber = findViewById(R.id.trafficNumber)
-        tryFileNo = findViewById(R.id.tryFileNo)
-        proceedButton = findViewById(R.id.proceedButton)
-        studentNumber = findViewById<EditText>(R.id.studentID)
-        car = findViewById(R.id.car)
-        city1 = findViewById(R.id.city1)
-        city2 = findViewById(R.id.city2)
-        progressBarDialog = ProgressBarDialog(context)
-        val cityAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.city_left)
-        val carAnimation: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_small)
-        val carAnimation2: Animation = AnimationUtils.loadAnimation(this,R.anim.car_right_exit)
+        try {
+            backButton = findViewById(R.id.backButton)
+            trafficNumber = findViewById(R.id.trafficNumber)
+            tryFileNo = findViewById(R.id.tryFileNo)
+            proceedButton = findViewById(R.id.proceedButton)
+            studentNumber = findViewById<EditText>(R.id.studentID)
+            car = findViewById(R.id.car)
+            city1 = findViewById(R.id.city1)
+            city2 = findViewById(R.id.city2)
+            progressBarDialog = ProgressBarDialog(context)
+            val cityAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.city_left)
+            val carAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.car_right_small)
+            val carAnimation2: Animation = AnimationUtils.loadAnimation(this, R.anim.car_right_exit)
 //        city1.startAnimation(cityAnimation)
 //        city2.startAnimation(cityAnimation)
-        car.startAnimation(carAnimation)
-        backButton.setOnClickListener {
-            val intent = Intent(context, CreateAccountActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(0,0)
+            car.startAnimation(carAnimation)
+            backButton.setOnClickListener {
+                val intent = Intent(context, CreateAccountActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(0, 0)
 //            overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-        }
-        trafficNumberVal = trafficNumber.text.toString()
-        tryFileNoVal = tryFileNo.text.toString()
-        proceedButton.setOnClickListener {
-            Log.e("Button","Checking")
-            if(trafficNumber.text.toString().trim().equals("")) {
-                CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
-            } else if(studentNumber!!.text.toString().trim().equals("")) {
-                CommonMethods.showLoginErrorPopUp(context,"Alert", "Field cannot be empty")
-            } else if(tryFileNo.text.toString().trim().equals("")) {
-                CommonMethods.showLoginErrorPopUp(context,"Alert","Field cannot be empty")
             }
-            else {
-                Log.e("Error","checking")
-                car.startAnimation(carAnimation2)
-                city1.startAnimation(cityAnimation)
-                city2.startAnimation(cityAnimation)
-                val call: Call<ResponseBody> = ApiClient.getApiService().validateStudentCall(
-                    "0",trafficNumber.text.toString(),tryFileNo.text.toString()
-                )
-                progressBarDialog!!.show()
+            trafficNumberVal = trafficNumber.text.toString()
+            tryFileNoVal = tryFileNo.text.toString()
+            proceedButton.setOnClickListener {
+                Log.e("Button", "Checking")
+                if (trafficNumber.text.toString().trim().equals("")) {
+                    val shake = AnimationUtils.loadAnimation(context, R.anim.shake)
+                    trafficNumber.startAnimation(shake)
+                    CommonMethods.showLoginErrorPopUp(context, "Alert", "Field cannot be empty")
+                } else if (studentNumber!!.text.toString().trim().equals("")) {
+                    val shake = AnimationUtils.loadAnimation(context, R.anim.shake)
+                    studentNumber.startAnimation(shake)
+                    CommonMethods.showLoginErrorPopUp(context, "Alert", "Field cannot be empty")
+                } else if (tryFileNo.text.toString().trim().equals("")) {
+                    val shake = AnimationUtils.loadAnimation(context, R.anim.shake)
+                    tryFileNo.startAnimation(shake)
+                    CommonMethods.showLoginErrorPopUp(context, "Alert", "Field cannot be empty")
+                } else {
+                    Log.e("Error", "checking")
+                    car.startAnimation(carAnimation2)
+                    city1.startAnimation(cityAnimation)
+                    city2.startAnimation(cityAnimation)
+                    val call: Call<ResponseBody> = ApiClient.getApiService().validateStudentCall(
+                        "0", trafficNumber.text.toString(), tryFileNo.text.toString()
+                    )
+                    progressBarDialog!!.show()
 
-                call.enqueue(object : Callback<ResponseBody> {
-                    override fun onResponse(
-                        call: Call<ResponseBody>,
-                        response: Response<ResponseBody>
-                    ) {
-                        progressBarDialog!!.dismiss()
-                        val responseData = response.body()
-                        if (responseData != null) {
-                            val jsonObject = JSONObject(responseData.string())
-                            if (jsonObject.has("status")) {
-                                val status = jsonObject.optString("status")
-                                if (status.equals("success")) {
-                                    val responseArray: JSONObject = jsonObject.optJSONObject("student_details")
-                                    val fullName: String = responseArray.optString("FullName")
-                                    val fullNameArabic: String = responseArray.optString("FullNameArabic")
-                                    val birthDate: String = responseArray.optString("BirthDate")
-                                    val gender: String = responseArray.optString("Gender")
-                                    val trafficNoVal = responseArray.optString("TrafficNo")
-                                    val tryFileNoVal = responseArray.optString("TryFileNo")
-                                    showValidateStudentPopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender)
+                    call.enqueue(object : Callback<ResponseBody> {
+                        override fun onResponse(
+                            call: Call<ResponseBody>,
+                            response: Response<ResponseBody>
+                        ) {
+                            progressBarDialog!!.dismiss()
+                            val responseData = response.body()
+                            if (responseData != null) {
+                                val jsonObject = JSONObject(responseData.string())
+                                if (jsonObject.has("status")) {
+                                    val status = jsonObject.optString("status")
+                                    if (status.equals("success")) {
+                                        val responseArray: JSONObject =
+                                            jsonObject.optJSONObject("student_details")
+                                        val fullName: String = responseArray.optString("FullName")
+                                        val fullNameArabic: String =
+                                            responseArray.optString("FullNameArabic")
+                                        val birthDate: String = responseArray.optString("BirthDate")
+                                        val gender: String = responseArray.optString("Gender")
+                                        val trafficNoVal = responseArray.optString("TrafficNo")
+                                        val tryFileNoVal = responseArray.optString("TryFileNo")
+                                        showValidateStudentPopUp(
+                                            fullName,
+                                            fullNameArabic,
+                                            birthDate,
+                                            trafficNoVal,
+                                            tryFileNoVal,
+                                            gender
+                                        )
 
+                                    }
                                 }
                             }
+
                         }
 
-                    }
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            progressBarDialog!!.dismiss()
+                            CommonMethods.showLoginErrorPopUp(context, "Alert", "Invalid Details")
+                        }
 
-                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                        progressBarDialog!!.dismiss()
-                        CommonMethods.showLoginErrorPopUp(context,"Alert","Invalid Details")
-                    }
-
-                })
-
+                    })
 
 
 //                overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
 
+                }
             }
+        } catch (e:Exception) {
+            Log.e("Error",e.toString())
         }
     }
 
