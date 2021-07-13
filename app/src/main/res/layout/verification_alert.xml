@@ -83,7 +83,7 @@
             android:layout_marginTop="8dp"
             android:padding="6dp"
             android:background="@drawable/curved_rectangle_off_white"
-            android:textColor="#FFFBF8"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/otp"
             app:layout_constraintStart_toStartOf="@+id/otp"
             app:layout_constraintTop_toBottomOf="@+id/otp" />
