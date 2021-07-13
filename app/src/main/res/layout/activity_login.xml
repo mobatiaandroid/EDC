@@ -42,7 +42,7 @@
             android:layout_height="55dp"
             android:background="@null"
             android:hint="Email "
-            android:padding="15dp"></com.google.android.material.textfield.TextInputEditText>
+            android:padding="15dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,7 +65,7 @@
             android:background="@null"
             android:hint="Password "
 
-            android:padding="10dp"></com.google.android.material.textfield.TextInputEditText>
+            android:padding="10dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

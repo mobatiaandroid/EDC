@@ -7,7 +7,7 @@
         android:duration="500"
         android:fillAfter="true"
         android:fromXDelta="0%p"
-        android:startOffset="800"
-        android:toXDelta="465" />
+        android:startOffset="0"
+        android:toXDelta="450" />
 
 </set>

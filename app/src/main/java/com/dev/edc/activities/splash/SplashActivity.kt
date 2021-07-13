@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import com.dev.edc.R
+import com.dev.edc.activities.LoginActivity
 import com.dev.edc.activity.login.LoginActivityNew
 
 class SplashActivity : AppCompatActivity() {
