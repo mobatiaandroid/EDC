@@ -161,7 +161,11 @@ class MainActivity : AppCompatActivity() {
         builder.setPositiveButton("OK") { dialog, which ->
             payButton.visibility = View.VISIBLE
             course.text = coursesSelectorList[checkedItem]
-            orderList.add(coursesList[checkedItem])
+            if (orderList.contains(coursesList[checkedItem])) {
+                Toast.makeText(context,"Course already added",Toast.LENGTH_SHORT).show()
+            } else {
+                orderList.add(coursesList[checkedItem])
+            }
             findTotal()
             val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
             itemTouchHelper.attachToRecyclerView(recyclerView)

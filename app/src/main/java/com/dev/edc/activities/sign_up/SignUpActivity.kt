@@ -84,12 +84,14 @@ class SignUpActivity : AppCompatActivity() {
 //            Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             }
             else {
-                Log.e("Error","checking")
+                if (trafficNumber.text.toString() == "1210102609"
+                    && tryFileNo.text.toString() =="111210036604"){
+                Log.e("Error", "checking")
                 car.startAnimation(carAnimation2)
                 city1.startAnimation(cityAnimation)
                 city2.startAnimation(cityAnimation)
                 val call: Call<ResponseBody> = ApiClient.getApiService().validateStudentCall(
-                    "0",trafficNumber.text.toString(),tryFileNo.text.toString()
+                    "0", trafficNumber.text.toString(), tryFileNo.text.toString()
                 )
                 progressBarDialog!!.show()
 
@@ -105,14 +107,23 @@ class SignUpActivity : AppCompatActivity() {
                             if (jsonObject.has("status")) {
                                 val status = jsonObject.optString("status")
                                 if (status.equals("success")) {
-                                    val responseArray: JSONObject = jsonObject.optJSONObject("student_details")
+                                    val responseArray: JSONObject =
+                                        jsonObject.optJSONObject("student_details")
                                     val fullName: String = responseArray.optString("FullName")
-                                    val fullNameArabic: String = responseArray.optString("FullNameArabic")
+                                    val fullNameArabic: String =
+                                        responseArray.optString("FullNameArabic")
                                     val birthDate: String = responseArray.optString("BirthDate")
                                     val gender: String = responseArray.optString("Gender")
                                     val trafficNoVal = responseArray.optString("TrafficNo")
                                     val tryFileNoVal = responseArray.optString("TryFileNo")
-                                    showValidateStudentPopUp(fullName,fullNameArabic,birthDate,trafficNoVal,tryFileNoVal,gender)
+                                    showValidateStudentPopUp(
+                                        fullName,
+                                        fullNameArabic,
+                                        birthDate,
+                                        trafficNoVal,
+                                        tryFileNoVal,
+                                        gender
+                                    )
 
                                 }
                             }
@@ -122,15 +133,16 @@ class SignUpActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         progressBarDialog!!.dismiss()
-                        CommonMethods.showLoginErrorPopUp(context,"Alert","Invalid Details")
+                        CommonMethods.showLoginErrorPopUp(context, "Alert", "Invalid Details")
                     }
 
                 })
 
 
-
 //                overridePendingTransition(R.anim.fade_in_activity,R.anim.fade_out_activity)
-
+                } else {
+                    CommonMethods.showLoginErrorPopUp(context,"Alert","Please Enter Valid Details ")
+                }
             }
         }
     }
